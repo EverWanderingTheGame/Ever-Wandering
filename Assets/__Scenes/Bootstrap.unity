@@ -344,6 +344,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5200636889626206028, guid: 1861417bc2aab854383573888480e165, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8
+      objectReference: {fileID: 0}
     - target: {fileID: 7436564649153433680, guid: 1861417bc2aab854383573888480e165, type: 3}
       propertyPath: m_Name
       value: Player
@@ -357,6 +361,16 @@ PrefabInstance:
 --- !u!4 &703225741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1229252628571345757, guid: 1861417bc2aab854383573888480e165, type: 3}
+  m_PrefabInstance: {fileID: 703225740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &703225742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7899705906651218857, guid: 1861417bc2aab854383573888480e165, type: 3}
+  m_PrefabInstance: {fileID: 703225740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &703225743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7436564649153433680, guid: 1861417bc2aab854383573888480e165, type: 3}
   m_PrefabInstance: {fileID: 703225740}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &744427095
@@ -1587,7 +1601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee7f73b852788542aa91ee2557739f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  State: 0
 --- !u!222 &4304522755968318368
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2614,7 +2627,7 @@ MonoBehaviour:
   sounds:
   - name: Pause
     clip: {fileID: 8300000, guid: 7eeb4198f0cdad64b891df385d548162, type: 3}
-    GetAudioSourceByName: Player
+    sourceObject: {fileID: 217719636}
     volume: 0.5
     pitch: 1
     spatialBlend: 0
@@ -2623,7 +2636,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Jump
     clip: {fileID: 8300000, guid: c0588912cd1613246b62a2308df2cd50, type: 3}
-    GetAudioSourceByName: Main Camera
+    sourceObject: {fileID: 703225742}
     volume: 0
     pitch: 1
     spatialBlend: 1
@@ -2632,7 +2645,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Walk
     clip: {fileID: 8300000, guid: bdaaaad79ef8a074a8eff791b2696ff5, type: 3}
-    GetAudioSourceByName: Player
+    sourceObject: {fileID: 703225743}
     volume: 1
     pitch: 1
     spatialBlend: 1

@@ -24,21 +24,7 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            if (s.GetAudioSourceByName.Length > 2)
-            {
-                GameObject sourceObject = GameObject.Find(s.GetAudioSourceByName);
-                if (sourceObject != null)
-                {
-                    s.source = sourceObject.AddComponent<AudioSource>();
-                }
-                else
-                {
-                    Debug.LogWarning("Sound: " + s.name + " not found!");
-                }
-            } else
-            {
-                s.source = gameObject.AddComponent<AudioSource>();
-            }
+            s.source = s.sourceObject.AddComponent<AudioSource>();
 
             s.source.clip = s.clip;
             s.source.volume = s.volume;
