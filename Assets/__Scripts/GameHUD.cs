@@ -10,8 +10,10 @@ public class GameHUD : MonoBehaviour
     public GameObject pauseMenuFX;
     public GameObject PlayerHUD;
     public string[] BlacklistedScenes;
+    public string FirstSceneName = "DemoScene";
 
     public static bool isPaused;
+
 
     void Start()
     {
@@ -59,6 +61,15 @@ public class GameHUD : MonoBehaviour
     {
         ResumeGame();
         SceneManager.LoadScene("MainMenu");
+        PlayerHUD.SetActive(false);
+        TrailManager.whenActiveted = false;
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(FirstSceneName);
+        TrailManager.whenActiveted = false;
+        GameManager.TeleportPlayerToDefaultPosistion();
     }
 
     public void QuitGame()

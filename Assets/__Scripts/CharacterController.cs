@@ -126,7 +126,6 @@ public class CharacterController2D : MonoBehaviour
         {
             old_Velocity /= 30;
             FindObjectOfType<AudioManager>().Play("Jump", old_Velocity);
-            Debug.Log(old_Velocity);
         }
         old_Grounded = m_Grounded;
         old_Velocity = Mathf.Abs(m_Rigidbody2D.velocity.y);
