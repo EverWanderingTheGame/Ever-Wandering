@@ -7,7 +7,7 @@ public static class PerformBootstrap
 {
     const string SceneName = "Bootstrap";
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     public static void Execute()
     {
         for (int sceneIndex = 0; sceneIndex < SceneManager.sceneCount; sceneIndex++)

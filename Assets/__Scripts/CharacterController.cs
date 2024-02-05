@@ -134,7 +134,7 @@ public class CharacterController2D : MonoBehaviour
         {
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-            
+
         }
     }
 
@@ -145,5 +145,7 @@ public class CharacterController2D : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+
+        TrailManager.flip = true;
     }
 }
