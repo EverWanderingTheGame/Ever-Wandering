@@ -13,6 +13,7 @@ public class GameHUD : MonoBehaviour
 
     public static bool isPaused;
 
+
     void Start()
     {
         pauseMenu.SetActive(false);
@@ -59,6 +60,7 @@ public class GameHUD : MonoBehaviour
     {
         ResumeGame();
         SceneManager.LoadScene("MainMenu");
+        PlayerHUD.SetActive(false);
     }
 
     public void QuitGame()
