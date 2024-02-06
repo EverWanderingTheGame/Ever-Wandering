@@ -1,7 +1,6 @@
 using Discord;
 using UnityEngine;
 
-[Icon("Assets/DiscordBlack.png")]
 public class Discord_Controller : MonoBehaviour
 {
     [Header("Application")]

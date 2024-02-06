@@ -3,7 +3,6 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-[Icon("Assets/AudioFileIcon.png")]
 public class AudioManager : MonoBehaviour
 {
     [Header("Audio Clips")]
