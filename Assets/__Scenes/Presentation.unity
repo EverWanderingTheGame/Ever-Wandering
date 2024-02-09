@@ -5937,7 +5937,7 @@ GameObject:
   - component: {fileID: 3525315713179239418}
   - component: {fileID: 7699327188007680114}
   m_Layer: 0
-  m_Name: DefaultPlayerSpawn
+  m_Name: SceneSettings
   m_TagString: DefaultPlayerSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

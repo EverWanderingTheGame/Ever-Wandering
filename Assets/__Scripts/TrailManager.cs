@@ -8,6 +8,7 @@ using UnityEngine.VFX;
 using UnityEditor;
 #endif
 
+[ExecuteInEditMode]
 public class TrailManager : MonoBehaviour
 {
     [Header("Arc Settings")]
@@ -37,6 +38,11 @@ public class TrailManager : MonoBehaviour
     private Color VFXColor;
     float Distance;
     float NearestDistance = float.PositiveInfinity;
+
+    private void OnEnable()
+    {
+        updateAllObjects();
+    }
 
     void Update()
     {
