@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Light
   - DefaultPlayerSpawn
+  - Light
   layers:
   - Default
   - TransparentFX

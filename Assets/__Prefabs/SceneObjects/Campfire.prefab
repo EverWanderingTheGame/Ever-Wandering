@@ -157,10 +157,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire
       objectReference: {fileID: 0}
-    - target: {fileID: 6944334496859030681, guid: ade9b8b01a672014cb6e1f27f672f5ab, type: 3}
-      propertyPath: m_TagString
-      value: Light
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

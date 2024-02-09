@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class TrailManager : MonoBehaviour
 {
@@ -71,7 +74,7 @@ public class TrailManager : MonoBehaviour
             Pos3.GetComponent<Light2D>().color = NearestLight.color;
             Pos3.GetComponent<Light2D>().intensity = VFXColor.a * 1.2f;
             // Pos4
-            Pos4.transform.position = Vector3.Lerp(Pos4.transform.position, NearestObject.transform.position, 15 * Time.deltaTime);
+            Pos4.transform.position = Vector3.Lerp(Pos4.transform.position, NearestObject.transform.position, 20 * Time.deltaTime);
 
             for (int i = 0; i < ArcVFX.Length; i++)
             {
@@ -115,6 +118,7 @@ public class TrailManager : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(TrailManager))]
 public class TrailManagerEditor : Editor
 {
@@ -124,6 +128,7 @@ public class TrailManagerEditor : Editor
 
         TrailManager trailManager = (TrailManager)target;
 
+        GUI.backgroundColor = new Color(85f, 177f, 85f, 128f) / 255f * new Vector4(5, 5, 5, 1);
         if (GUILayout.Button("Update All Objects"))
         {
             TrailManager.updateAllObjects();
@@ -131,3 +136,4 @@ public class TrailManagerEditor : Editor
         }
     }
 }
+#endif

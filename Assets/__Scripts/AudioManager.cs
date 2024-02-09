@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
+    public static bool isMuted = false;
 
     void Awake()
     {
@@ -38,12 +39,11 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
 
-        if (Volume > 0) 
-            s.source.volume = Volume;
-        else if (s.volume == 0) 
-            s.source.volume = 1f;
-        else 
-            s.source.volume = s.volume;
+        if (Volume > 0) s.source.volume = Volume;
+        else if (s.volume == 0) s.source.volume = 1f;
+        else s.source.volume = s.volume;
+
+        if (isMuted) s.source.volume = 0f;
 
         s.source.time = s.RandomizeTime ? UnityEngine.Random.Range(0f, s.clip.length) : 0f;
         if (s == null)
@@ -61,5 +61,15 @@ public class AudioManager : MonoBehaviour
         if (s == null) return;
 
         s.source.Stop();
+    }
+
+    public static void Mute()
+    {
+        isMuted = true;
+    }
+
+    public static void UnMute()
+    {
+        isMuted = false;
     }
 }

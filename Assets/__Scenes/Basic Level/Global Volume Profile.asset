@@ -84,14 +84,9 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 6
   dirtTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 9f1d165d81543354f907137e9c213baa, type: 3}
     dimension: 1
   dirtIntensity:
-<<<<<<< Updated upstream
-    m_OverrideState: 0
-    m_Value: 27.5
-=======
     m_OverrideState: 1
-    m_Value: 3
->>>>>>> Stashed changes
+    m_Value: 5
