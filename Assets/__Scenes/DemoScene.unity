@@ -110171,7 +110171,7 @@ Transform:
   m_GameObject: {fileID: 1678961438308240454}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.51, y: -2.81, z: 0.22476329}
+  m_LocalPosition: {x: -2.46, y: -2.81, z: 0.22476329}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110346,6 +110346,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableHUD: 0
+  disablePlayer: 0
+  disableCameraFX: 0
+  muteAudio: 0
 --- !u!1001 &7401226024794389300
 PrefabInstance:
   m_ObjectHideFlags: 0

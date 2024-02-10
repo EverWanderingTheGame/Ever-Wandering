@@ -16,11 +16,11 @@ public class GameManager : MonoBehaviour
 
     public static void TeleportPlayerToDefaultPosistion()
     {
-        GameObject SpawnPoint = GameObject.FindWithTag("DefaultPlayerSpawn");
+        GameObject SpawnPoint = GameObject.Find("SceneSettings");
         GameObject Player = GameObject.Find("Player");
         if (SpawnPoint == null || Player == null)
         {
-            Debug.Log("SpawnPoint NOT found");
+            Debug.LogWarning("SpawnPoint NOT found");
             return;
         }
         Player.transform.position = SpawnPoint.transform.position;

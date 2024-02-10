@@ -5936,6 +5936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3525315713179239418}
   - component: {fileID: 7699327188007680114}
+  - component: {fileID: 7699327188007680115}
   m_Layer: 0
   m_Name: SceneSettings
   m_TagString: DefaultPlayerSpawn
@@ -28471,6 +28472,18 @@ MonoBehaviour:
   disablePlayer: 1
   disableCameraFX: 1
   muteAudio: 1
+--- !u!114 &7699327188007680115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3674767454244292930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b1a01df82f5a94faa867685412e72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!19719996 &7869980674248514006
 TilemapCollider2D:
   m_ObjectHideFlags: 0

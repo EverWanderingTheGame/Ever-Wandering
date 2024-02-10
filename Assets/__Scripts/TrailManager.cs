@@ -19,7 +19,7 @@ public class TrailManager : MonoBehaviour
     public GameObject Pos3;
     public GameObject Pos4;
     [Header("LightPower")]
-    public Animator HUD;
+    public GameObject HUD;
     public float LightPowerMax = 100;
     public float LightPowerChargeSpeed = 2f;
     public float LightPowerDischargeSpeed = 1f;
@@ -28,7 +28,7 @@ public class TrailManager : MonoBehaviour
     [Header("Other Settings")]
     [Range(1, 100)] public float ConnenctionDistance = 5;
     [Range(1, 10)] public float ColorIntensity = 6;
-    
+
     public static float LightPower;
     public static GameObject[] AllObjects;
     public static bool flip = false;
@@ -46,16 +46,20 @@ public class TrailManager : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < AllObjects.Length; i++)
+        if (AllObjects != null)
         {
-            Distance = Vector3.Distance(this.transform.position, AllObjects[i].transform.position);
-
-            if (Distance < NearestDistance)
+            for (int i = 0; i < AllObjects.Length; i++)
             {
-                NearestDistance = Distance;
-                NearestObject = AllObjects[i];
+                Distance = Vector3.Distance(this.transform.position, AllObjects[i].transform.position);
+
+                if (Distance < NearestDistance)
+                {
+                    NearestDistance = Distance;
+                    NearestObject = AllObjects[i];
+                }
             }
         }
+        else updateAllObjects();
 
         if (NearestDistance <= ConnenctionDistance)
         {
@@ -99,7 +103,7 @@ public class TrailManager : MonoBehaviour
                 LightPower += LightPowerChargeSpeed * Time.deltaTime;
                 ChargingText.SetActive(true);
             }
-            
+
             Arc.SetActive(true);
         }
         else if (NearestDistance > ConnenctionDistance)
@@ -113,8 +117,12 @@ public class TrailManager : MonoBehaviour
             }
         }
 
-        Text.text = "Light " + (LightPower * 100 / LightPowerMax).ToString("F0") + "%";
-        HUD.SetFloat("LightPower", LightPower);
+        if (HUD.activeInHierarchy == true)
+        {
+            Text.text = "Light " + (LightPower * 100 / LightPowerMax).ToString("F0") + "%";
+            HUD.GetComponent<Animator>().SetFloat("LightPower", LightPower);
+        }
+
         NearestDistance = float.PositiveInfinity;
     }
 
