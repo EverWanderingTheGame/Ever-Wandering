@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -12,20 +13,28 @@ using UnityEditor.SceneManagement;
 public class SceneSettings : MonoBehaviour
 {
     [Header("OnStart Scene Settings")]
-    [SerializeField] public bool disableHUD = false;
+    [Space, Header("Player")]
     [SerializeField] public bool disablePlayer = false;
+    [SerializeField] public bool disablePlayerMovement = false;
+    [Space, Header("Graphics")]
+    [SerializeField] public bool disableHUD = false;
+    [SerializeField] public bool disablePauseMenu = false;
     [SerializeField] public bool disableCameraFX = false;
+    [SerializeField, Tooltip("Only in BUILD")] public bool disableCursor = false;
+    [Space, Header("Audio")]
     [SerializeField] public bool muteAudio = false;
 
-    public static GameObject HUD;
     public static GameObject Player;
     public static GameObject CameraFX;
 
+    GameHUD gameHUD;
+    PlayerMovement playerMovement;
+    PlayerHeadAnimator playerHeadAnimator;
 
     void Awake()
     {
 #if UNITY_EDITOR
-        if (UnityEditor.BuildPipeline.isBuildingPlayer) return; // CORRUPTS THE SCENES!
+        if (UnityEditor.BuildPipeline.isBuildingPlayer) return;
         if (GameObject.Find("Game Manager") == null)
         {
             if (UnityEditor.EditorApplication.isPlaying)
@@ -38,24 +47,34 @@ public class SceneSettings : MonoBehaviour
                 EditorSceneManager.SetActiveScene(scene);
                 EditorSceneManager.MoveSceneBefore(scene, EditorSceneManager.GetSceneAt(0));
             }
-            Shader.SetGlobalFloat("_TessMult", 1f);
         }
 #endif
     }
 
     private void OnEnable()
     {
-        if (GameObject.Find("HUD") != null) HUD = GameObject.Find("HUD");
-        if (disableHUD && HUD != null) HUD.SetActive(false);
-        else if (!disableHUD && HUD != null) HUD.SetActive(true);
+#if UNITY_EDITOR
+        if (BuildPipeline.isBuildingPlayer) return;
+#endif
 
-        if (GameObject.Find("Player") != null) Player = GameObject.Find("Player");
-        if (disablePlayer && Player != null) Player.SetActive(false);
-        else if (!disablePlayer && Player != null) Player.SetActive(true);
+        gameHUD = FindObjectOfType<GameHUD>(true);
+        playerMovement = FindObjectOfType<PlayerMovement>(true);
+        playerHeadAnimator = FindObjectOfType<PlayerHeadAnimator>(true);
 
-        if (GameObject.Find("Particles/FX") != null) CameraFX = GameObject.Find("Particles/FX");
-        if (disableCameraFX && CameraFX != null) CameraFX.SetActive(false);
-        else if (!disableCameraFX && CameraFX != null) CameraFX.SetActive(true);
+        applySceneSettings();
+    }
+
+    public void applySceneSettings()
+    {
+        gameHUD.PlayerHUD.SetActive(!disableHUD);
+        gameHUD.unpauseable = disablePauseMenu;
+        gameHUD.CameraFX.SetActive(!disableCameraFX);
+#if !UNITY_EDITOR
+        Cursor.visible = !disableCursor;
+#endif
+
+        playerMovement.enabled = !disablePlayerMovement;
+        playerHeadAnimator.enabled = !disablePlayerMovement;
 
         if (muteAudio) AudioManager.Mute();
         else AudioManager.UnMute();
@@ -65,8 +84,31 @@ public class SceneSettings : MonoBehaviour
     {
         if (Application.isPlaying)
         {
+            if (GameObject.Find("Player") != null) Player = GameObject.Find("Player");
+            if (disablePlayer && Player != null) Player.SetActive(false);
+            else if (!disablePlayer && Player != null) Player.SetActive(true);
+
             GameManager.TeleportPlayerToDefaultPosistion();
             TrailManager.updateAllObjects();
         }
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(SceneSettings))]
+public class SceneSettingsEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        SceneSettings sceneSettings = (SceneSettings)target;
+
+        GUI.backgroundColor = new Color(202f, 74f, 74f, 128f) / 255f * new Vector4(5, 5, 5, 1);
+        if (GUILayout.Button("Apply Scene Settings (IN EDIT MODE)"))
+        {
+            sceneSettings.applySceneSettings();
+        }
+    }
+}
+#endif

@@ -9,10 +9,10 @@ public class GameHUD : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject pauseMenuFX;
     public GameObject PlayerHUD;
-    public string[] BlacklistedScenes;
+    public GameObject CameraFX;
 
+    [HideInInspector] public bool unpauseable;
     public static bool isPaused;
-
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class GameHUD : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !BlacklistedScenes.Contains(SceneManager.GetActiveScene().name))
+        if(Input.GetKeyDown(KeyCode.Escape) && !unpauseable)
         {
             if(isPaused)
             {
@@ -31,15 +31,16 @@ public class GameHUD : MonoBehaviour
             {
                 PauseGame();
             }
-        }   
+        }
     }
 
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        CameraFX.SetActive(true);
         pauseMenuFX.SetActive(true);
         PlayerHUD.SetActive(false);
-        FindObjectOfType<AudioManager>().Play("Pause");
+        AudioManager.instance.Play("Pause");
 
         Time.timeScale = 0f;
         isPaused = true;
@@ -48,9 +49,12 @@ public class GameHUD : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        CameraFX.SetActive(false);
         pauseMenuFX.SetActive(false);
         PlayerHUD.SetActive(true);
-        FindObjectOfType<AudioManager>().Stop("Pause");
+        AudioManager.instance.Stop("Pause");
+
+        FindObjectOfType<SceneSettings>().applySceneSettings();
 
         Time.timeScale = 1f;
         isPaused = false;

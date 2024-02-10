@@ -41,6 +41,10 @@ public class TrailManager : MonoBehaviour
 
     private void OnEnable()
     {
+#if UNITY_EDITOR
+        if (BuildPipeline.isBuildingPlayer) return;
+#endif
+
         updateAllObjects();
     }
 
