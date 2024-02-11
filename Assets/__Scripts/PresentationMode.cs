@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PresentationMode : MonoBehaviour
 {
+    public Animator animator;
     public GameObject[] posistions;
 
     GameObject Player;
@@ -16,9 +17,9 @@ public class PresentationMode : MonoBehaviour
 
     void Awake()
     {
-        Player = GameManager.instance.Player;
+        Player = GameManager.instance.player;
 
-        // Set Cinemachine DeadZone to 0
+        // Cinemachine DeadZone and SoftZone
         virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         componentBase = virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body) as CinemachineComponentBase;
         if (componentBase is CinemachineFramingTransposer)
@@ -30,19 +31,29 @@ public class PresentationMode : MonoBehaviour
             framingTransposer.m_SoftZoneWidth = 2;
         }
 
+        Player.transform.position = posistions[posIndex].transform.position;
 
-        posIndexMax = posistions.Length - 1;
+        posIndexMax = posistions.Length;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Jump"))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log(posIndex);
-            Player.transform.position = posistions[posIndex].transform.position;
+            posIndex++;
+            if (posIndexMax == posIndex) posIndex = 0;
 
-            if(posIndexMax == posIndex) posIndex = 0;
-            else posIndex++;
+            animator.SetInteger("Scene", posIndex);
+
+            Player.transform.position = posistions[posIndex].transform.position;
+        } else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            posIndex--;
+            if (0 > posIndex) posIndex = 0;
+
+            animator.SetInteger("Scene", posIndex);
+
+            Player.transform.position = posistions[posIndex].transform.position;
         }
     }
 }

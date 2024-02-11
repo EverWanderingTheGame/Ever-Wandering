@@ -33,7 +33,7 @@ public class Utils : MonoBehaviour
     public static void TeleportPlayerToSceneSettings()
     {
         GameObject SpawnPoint = GameObject.Find("SceneSettings");
-        GameObject Player = GameManager.instance.Player;
+        GameObject Player = GameManager.instance.player;
         if (SpawnPoint == null)
         {
             Debug.LogError("SceneSettings NOT FOUND");

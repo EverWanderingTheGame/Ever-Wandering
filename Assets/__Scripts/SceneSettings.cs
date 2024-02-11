@@ -10,7 +10,6 @@ using UnityEditor.SceneManagement;
 
 [ExecuteInEditMode]
 [DefaultExecutionOrder(-19998)]
-[HelpURL("https://github.com/EverWanderingTheGame/Ever-Wandering/commit/56e44cbf4661ce6b2bba74d5ce6c781fc67e762a")]
 public class SceneSettings : MonoBehaviour
 {
     [Header("OnStart Scene Settings")]
@@ -21,14 +20,12 @@ public class SceneSettings : MonoBehaviour
     [SerializeField] public bool disableHUD = false;
     [SerializeField] public bool disablePauseMenu = false;
     [SerializeField] public bool disableCameraFX = false;
-    [SerializeField, Tooltip("Only in BUILD")] public bool disableCursor = false;
+    [Tooltip("Only in BUILD")] public bool disableCursor = false;
     [Space, Header("Audio")]
     [SerializeField] public bool muteAudio = false;
     [Space]
 
-    public static GameObject Player;
-    public static GameObject CameraFX;
-
+    GameObject Player;
     GameHUD gameHUD;
     PlayerMovement playerMovement;
     PlayerHeadAnimator playerHeadAnimator;

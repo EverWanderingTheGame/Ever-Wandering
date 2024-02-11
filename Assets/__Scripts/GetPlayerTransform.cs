@@ -8,7 +8,7 @@ public class GetPlayerTransform : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player"); 
+        player = GameManager.instance.player;
     }
 
     void Update()

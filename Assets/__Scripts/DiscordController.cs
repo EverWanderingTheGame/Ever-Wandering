@@ -1,16 +1,15 @@
 using Discord;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Discord_Controller : MonoBehaviour
 {
     [Header("Application")]
     public long applicationID;
-    [Space]
-    [Header("Details")]
+    [Space][Header("Details")]
     public string details = "Solo Wandering";
     public string state = "";
-    [Space]
-    [Header("Image")]
+    [Space][Header("Image")]
     public string largeImage = "";
     public string largeText = "";
 
