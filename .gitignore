@@ -1,10 +1,8 @@
-/Library
-/Logs
-/obj
-/Temp
-/UserSettings
-/.vs
+src/Library
+src/Logs
+src/obj
+src/Temp
+src/UserSettings
+src/.vs
 
-UpgradeLog.htm
-Ever Wandering.sln
-.vsconfig
+src/.vsconfig
