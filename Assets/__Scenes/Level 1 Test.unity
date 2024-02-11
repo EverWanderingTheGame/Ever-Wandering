@@ -6619,11 +6619,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disablePlayer: 0
   disablePlayerMovement: 0
-  disableHUD: 1
-  disablePauseMenu: 1
-  disableCameraFX: 1
+  disableHUD: 0
+  disablePauseMenu: 0
+  disableCameraFX: 0
   disableCursor: 0
-  muteAudio: 1
+  muteAudio: 0
 --- !u!483693784 &1104614330653661868
 TilemapRenderer:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ using UnityEditor.SceneManagement;
 
 [ExecuteInEditMode]
 [DefaultExecutionOrder(-19998)]
+[HelpURL("https://github.com/EverWanderingTheGame/Ever-Wandering/commit/56e44cbf4661ce6b2bba74d5ce6c781fc67e762a")]
 public class SceneSettings : MonoBehaviour
 {
     [Header("OnStart Scene Settings")]
@@ -23,6 +24,7 @@ public class SceneSettings : MonoBehaviour
     [SerializeField, Tooltip("Only in BUILD")] public bool disableCursor = false;
     [Space, Header("Audio")]
     [SerializeField] public bool muteAudio = false;
+    [Space]
 
     public static GameObject Player;
     public static GameObject CameraFX;
@@ -33,7 +35,7 @@ public class SceneSettings : MonoBehaviour
 
     void Awake()
     {
-#if UNITY_EDITOR
+#if UNITY_EDITOR // Load Bootstrap scene if not in play mode
         if (UnityEditor.BuildPipeline.isBuildingPlayer) return;
         if (GameObject.Find("Game Manager") == null)
         {
@@ -88,7 +90,7 @@ public class SceneSettings : MonoBehaviour
             if (disablePlayer && Player != null) Player.SetActive(false);
             else if (!disablePlayer && Player != null) Player.SetActive(true);
 
-            GameManager.TeleportPlayerToDefaultPosistion();
+            Utils.TeleportPlayerToSceneSettings();
             TrailManager.updateAllObjects();
         }
     }
@@ -98,17 +100,115 @@ public class SceneSettings : MonoBehaviour
 [CustomEditor(typeof(SceneSettings))]
 public class SceneSettingsEditor : Editor
 {
+    private GUIStyle boldLabelStyle;
+    private GUIStyle buttonStyle;
+
+    bool disablePlayer;
+    bool disablePlayerMovement;
+    bool disableHUD;
+    bool disablePauseMenu;
+    bool disableCameraFX;
+    bool disableCursor;
+    bool muteAudio;
+
+    private void InitializeStyles()
+    {
+        if (boldLabelStyle == null)
+        {
+            boldLabelStyle = new GUIStyle(EditorStyles.label);
+            boldLabelStyle.fontStyle = FontStyle.Bold;
+        }
+        if (buttonStyle == null)
+        {
+            buttonStyle = new GUIStyle(GUI.skin.button);
+            buttonStyle.normal.textColor = Color.white;
+            buttonStyle.fontStyle = FontStyle.Bold;
+            buttonStyle.alignment = TextAnchor.MiddleCenter;
+            buttonStyle.margin = new RectOffset(1, 1, 10, 10);
+            buttonStyle.border = new RectOffset(0, 0, 0, 0);
+            buttonStyle.padding = new RectOffset(0, 0, 5, 5);
+        }
+
+    }
+
+    public void saveSetting()
+    {
+        SceneSettings sceneSettings = (SceneSettings)target;
+
+        disablePlayer = sceneSettings.disablePlayer;
+        disablePlayerMovement = sceneSettings.disablePlayerMovement;
+        disableHUD = sceneSettings.disableHUD;
+        disablePauseMenu = sceneSettings.disablePauseMenu;
+        disableCameraFX = sceneSettings.disableCameraFX;
+        disableCursor = sceneSettings.disableCursor;
+        muteAudio = sceneSettings.muteAudio;
+    }
+
+    public void allBools(bool state)
+    {
+        SceneSettings sceneSettings = (SceneSettings)target;
+
+        sceneSettings.disablePlayer = state;
+        sceneSettings.disablePlayerMovement = state;
+        sceneSettings.disableHUD = state;
+        sceneSettings.disablePauseMenu = state;
+        sceneSettings.disableCameraFX = state;
+        sceneSettings.disableCursor = state;
+        sceneSettings.muteAudio = state;
+    }
+
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
+        InitializeStyles();
 
         SceneSettings sceneSettings = (SceneSettings)target;
 
+        GUILayout.BeginHorizontal();
+        GUI.backgroundColor = new Color(110f, 200f, 110f, 64f) / 255f * new Vector4(5, 5, 5, 1);
+        if (GUILayout.Button("All", buttonStyle))
+        {
+            saveSetting();
+            allBools(true);
+            sceneSettings.applySceneSettings();
+        }
+        GUI.backgroundColor = new Color(87f, 35f, 30f, 64f) / 255f * new Vector4(5, 5, 5, 1);
+        if (GUILayout.Button("None", buttonStyle))
+        {
+            saveSetting();
+            allBools(false);
+            sceneSettings.applySceneSettings();
+        }
+        GUI.backgroundColor = new Color(108f, 181f, 255f, 64f) / 255f * new Vector4(5, 5, 5, 1);
+        if (GUILayout.Button("Revert Settings", buttonStyle))
+        {
+            sceneSettings.disablePlayer = disablePlayer;
+            sceneSettings.disablePlayerMovement = disablePlayerMovement;
+            sceneSettings.disableHUD = disableHUD;
+            sceneSettings.disablePauseMenu = disablePauseMenu;
+            sceneSettings.disableCameraFX = disableCameraFX;
+            sceneSettings.disableCursor = disableCursor;
+            sceneSettings.muteAudio = muteAudio;
+
+            sceneSettings.applySceneSettings();
+        }
+        GUILayout.EndHorizontal();
+
+        GUILayout.Label("EDITOR BUTTONS", boldLabelStyle);
+
+        GUILayout.BeginHorizontal();
         GUI.backgroundColor = new Color(202f, 74f, 74f, 128f) / 255f * new Vector4(5, 5, 5, 1);
-        if (GUILayout.Button("Apply Scene Settings (IN EDIT MODE)"))
+        if (GUILayout.Button("Apply Scene Settings", buttonStyle, GUILayout.Height(25)))
         {
             sceneSettings.applySceneSettings();
         }
+        GUI.backgroundColor = new Color(35f, 82f, 171f, 128f) / 255f * new Vector4(5, 5, 5, 1);
+        if (GUILayout.Button("Teleport Player To Scene Settings", buttonStyle, GUILayout.Height(25)))
+        {
+            Utils.TeleportPlayerToSceneSettings();
+        }
+        GUILayout.EndHorizontal();
+
     }
 }
 #endif

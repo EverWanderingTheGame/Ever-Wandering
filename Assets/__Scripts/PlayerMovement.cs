@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();   
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-
-        GameManager.TeleportPlayerToDefaultPosistion();
     }
 
     void Update()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
+using UnityEngine.Diagnostics;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -98,7 +99,7 @@ public class TrailManager : MonoBehaviour
 
             if (flip)
             {
-                Utility.Unflip(Arc);
+                Utils.Unflip(Arc);
                 flip = false;
             }
 
@@ -147,7 +148,7 @@ public class TrailManagerEditor : Editor
         TrailManager trailManager = (TrailManager)target;
 
         GUI.backgroundColor = new Color(85f, 177f, 85f, 128f) / 255f * new Vector4(5, 5, 5, 1);
-        if (GUILayout.Button("Update All Objects"))
+        if (GUILayout.Button("Update All Objects", GUILayout.Height(25)))
         {
             TrailManager.updateAllObjects();
             Debug.Log("Updated Objects(" + TrailManager.AllObjects.Length.ToString() + ")");

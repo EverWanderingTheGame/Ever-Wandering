@@ -40,6 +40,7 @@ public class GameHUD : MonoBehaviour
         CameraFX.SetActive(true);
         pauseMenuFX.SetActive(true);
         PlayerHUD.SetActive(false);
+        Cursor.visible = true;
         AudioManager.instance.Play("Pause");
 
         Time.timeScale = 0f;
@@ -48,13 +49,11 @@ public class GameHUD : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
-        CameraFX.SetActive(false);
-        pauseMenuFX.SetActive(false);
-        PlayerHUD.SetActive(true);
-        AudioManager.instance.Stop("Pause");
-
         FindObjectOfType<SceneSettings>().applySceneSettings();
+
+        pauseMenu.SetActive(false);
+        pauseMenuFX.SetActive(false);
+        AudioManager.instance.Stop("Pause");
 
         Time.timeScale = 1f;
         isPaused = false;
