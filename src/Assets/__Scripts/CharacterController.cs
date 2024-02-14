@@ -119,13 +119,13 @@ public class CharacterController2D : MonoBehaviour
         if (Mathf.Abs(m_Rigidbody2D.velocity.x) > 1 && time >= interpolationPeriod && m_Grounded)
         {
             time = 0f;
-            FindObjectOfType<AudioManager>().Play("Walk");
+            AudioManager.instance.Play("Walk");
         }
 
         if (old_Grounded != m_Grounded && old_Grounded == false)
         {
             old_Velocity /= 30;
-            FindObjectOfType<AudioManager>().Play("JumpDrop", old_Velocity);
+            AudioManager.instance.Play("JumpDrop", old_Velocity);
         }
         old_Grounded = m_Grounded;
         old_Velocity = Mathf.Abs(m_Rigidbody2D.velocity.y);

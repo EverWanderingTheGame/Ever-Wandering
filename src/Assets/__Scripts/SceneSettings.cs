@@ -83,9 +83,7 @@ public class SceneSettings : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            if (GameObject.Find("Player") != null) Player = GameObject.Find("Player");
-            if (disablePlayer && Player != null) Player.SetActive(false);
-            else if (!disablePlayer && Player != null) Player.SetActive(true);
+            GameManager.instance.player.SetActive(!disablePlayer);
 
             Utils.TeleportPlayerToSceneSettings();
             TrailManager.updateAllObjects();

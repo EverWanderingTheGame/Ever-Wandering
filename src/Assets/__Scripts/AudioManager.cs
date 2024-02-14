@@ -2,7 +2,10 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using System.Collections;
+using UnityEditor;
+using System.Linq;
 
+[ExecuteInEditMode]
 public class AudioManager : MonoBehaviour
 {
     [Header("Audio Clips")]
@@ -19,8 +22,11 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-            
-        DontDestroyOnLoad(gameObject);
+
+        if (Application.isPlaying)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
 
         foreach (Sound s in sounds)
         {
@@ -63,6 +69,14 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
+    public void stopAllSound()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.Stop();
+        }
+    }
+
     public static void Mute()
     {
         isMuted = true;
@@ -73,3 +87,44 @@ public class AudioManager : MonoBehaviour
         isMuted = false;
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(AudioManager))]
+public class AudioManagerEditor : Editor
+{
+    private Sound[] sounds;
+    private string[] soundName;
+    private int selectedSoundIndex = 0;
+    private float volume = 1f;
+
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        AudioManager audioManager = (AudioManager)target;
+
+        sounds = ((AudioManager)target).sounds;
+        soundName = new string[sounds.Length];
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            soundName[i] = sounds[i].name;
+        }
+
+        GUILayout.Label("In Editor Sound Tester", EditorStyles.boldLabel);
+
+        volume = EditorGUILayout.Slider("", volume, 0f, 1f, GUILayout.Width(280));
+
+        GUILayout.BeginHorizontal();
+        selectedSoundIndex = EditorGUILayout.Popup("", selectedSoundIndex, soundName);
+        if (GUILayout.Button("Play Sound"))
+        {
+            audioManager.stopAllSound();
+            audioManager.Play(soundName[selectedSoundIndex], volume);
+        }
+        if (GUILayout.Button("Stop All Sounds"))
+        {
+            audioManager.stopAllSound();
+        }
+        GUILayout.EndHorizontal();
+    }
+}
+#endif
