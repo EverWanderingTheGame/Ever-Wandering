@@ -1,9 +1,10 @@
-using UnityEngine.Audio;
 using System;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
-using System.Linq;
+#endif
 
 [ExecuteInEditMode]
 public class AudioManager : MonoBehaviour
@@ -27,6 +28,8 @@ public class AudioManager : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
+
+        deleteAudioSources();
 
         foreach (Sound s in sounds)
         {
@@ -59,6 +62,18 @@ public class AudioManager : MonoBehaviour
         }
 
         s.source.Play();
+    }
+
+    public void deleteAudioSources()
+    {
+        foreach (Sound s in sounds)
+        {
+            if (s.source == null) return;
+
+            GameObject source = s.sourceObject;
+
+            DestroyImmediate(source.GetComponent<AudioSource>());
+        }
     }
 
     public void Stop(string name)
@@ -102,7 +117,7 @@ public class AudioManagerEditor : Editor
         base.OnInspectorGUI();
         AudioManager audioManager = (AudioManager)target;
 
-        sounds = ((AudioManager)target).sounds;
+        sounds = audioManager.sounds;
         soundName = new string[sounds.Length];
         for (int i = 0; i < sounds.Length; i++)
         {

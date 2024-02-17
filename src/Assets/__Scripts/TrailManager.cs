@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
-using UnityEngine.Diagnostics;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -124,7 +123,7 @@ public class TrailManager : MonoBehaviour
 
         if (HUD.activeInHierarchy == true)
         {
-            Text.text = "Light " + (LightPower * 100 / LightPowerMax).ToString("F0") + "%";
+            Text.text = "Енергия " + (LightPower * 100 / LightPowerMax).ToString("F0") + "%";
             HUD.GetComponent<Animator>().SetFloat("LightPower", LightPower);
         }
 

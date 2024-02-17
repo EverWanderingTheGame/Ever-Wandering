@@ -108,11 +108,6 @@ public class SceneSettingsEditor : Editor
 
     private void InitializeStyles()
     {
-        if (boldLabelStyle == null)
-        {
-            boldLabelStyle = new GUIStyle(EditorStyles.label);
-            boldLabelStyle.fontStyle = FontStyle.Bold;
-        }
         if (buttonStyle == null)
         {
             buttonStyle = new GUIStyle(GUI.skin.button);
@@ -123,7 +118,6 @@ public class SceneSettingsEditor : Editor
             buttonStyle.border = new RectOffset(0, 0, 0, 0);
             buttonStyle.padding = new RectOffset(0, 0, 5, 5);
         }
-
     }
 
     public void saveSetting()
@@ -189,7 +183,7 @@ public class SceneSettingsEditor : Editor
         }
         GUILayout.EndHorizontal();
 
-        GUILayout.Label("EDITOR BUTTONS", boldLabelStyle);
+        GUILayout.Label("EDITOR BUTTONS", EditorStyles.boldLabel);
 
         GUILayout.BeginHorizontal();
         GUI.backgroundColor = new Color(202f, 74f, 74f, 128f) / 255f * new Vector4(5, 5, 5, 1);
