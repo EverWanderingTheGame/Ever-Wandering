@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        boxCollider2D = GetComponent<BoxCollider2D>();   
+        boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -42,7 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-        jump = false;
+        if (!LevelManager.instance.isLoading)
+        {
+            controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+            jump = false;
+        }
     }
 }

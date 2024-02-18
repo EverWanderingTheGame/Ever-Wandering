@@ -61,7 +61,7 @@ public class GameHUD : MonoBehaviour
     public void GoToMainMenu()
     {
         ResumeGame();
-        SceneManager.LoadScene("MainMenu");
+        LevelManager.instance.LoadScene("MainMenu");
         PlayerHUD.SetActive(false);
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -16,19 +17,27 @@ public class SceneSettings : MonoBehaviour
     [Space, Header("Player")]
     [SerializeField] public bool disablePlayer = false;
     [SerializeField] public bool disablePlayerMovement = false;
+    [SerializeField, Range(-1, 100), Tooltip("-1 = DO NOT CHANGE")] public int StartingLightPower = 100;
     [Space, Header("Graphics")]
     [SerializeField] public bool disableHUD = false;
     [SerializeField] public bool disablePauseMenu = false;
     [SerializeField] public bool disableCameraFX = false;
     [Tooltip("Only in BUILD")] public bool disableCursor = false;
+    [Space, Header("Camera")]
+    [SerializeField] public Transform cameraTarget;
+    [SerializeField, Range(2, 20)] public float lensOrthoSize = 7;
     [Space, Header("Audio")]
     [SerializeField] public bool muteAudio = false;
     [Space]
+    [Header("In EditMode Only")]
+    [SerializeField] public bool disableLoadingScreen = true;
+    [SerializeField] public bool disableHUDInEditMode = true;
 
-    GameObject Player;
     GameHUD gameHUD;
     PlayerMovement playerMovement;
     PlayerHeadAnimator playerHeadAnimator;
+    CinemachineVirtualCamera c_VirtualCam;
+
 
     void Awake()
     {
@@ -48,6 +57,7 @@ public class SceneSettings : MonoBehaviour
             }
         }
 #endif
+        c_VirtualCam = FindObjectOfType<CinemachineVirtualCamera>();
     }
 
     private void OnEnable()
@@ -75,23 +85,43 @@ public class SceneSettings : MonoBehaviour
         playerMovement.enabled = !disablePlayerMovement;
         playerHeadAnimator.enabled = !disablePlayerMovement;
 
+        if (StartingLightPower != -1) TrailManager.LightPower = StartingLightPower;
+
+        if (!Application.isPlaying) FindObjectOfType<LevelManager>()._loaderCanvas.SetActive(!disableLoadingScreen);
+        if (disableHUDInEditMode && !Application.isPlaying) gameHUD.PlayerHUD.SetActive(false);
+
         if (muteAudio) AudioManager.Mute();
         else AudioManager.UnMute();
+
+        c_VirtualCam.m_Lens.OrthographicSize = lensOrthoSize;
+
+        if (Application.isPlaying) // If in GAME
+        {
+            if (cameraTarget != null)
+            {
+                c_VirtualCam.m_LookAt = cameraTarget;
+                c_VirtualCam.m_Follow = cameraTarget;
+            }
+            else
+            {
+                c_VirtualCam.m_LookAt = GameManager.instance.player.transform;
+                c_VirtualCam.m_Follow = GameManager.instance.player.transform;
+            }
+        }
     }
 
-    void Start()
+    private void Start()
     {
         if (Application.isPlaying)
         {
             GameManager.instance.player.SetActive(!disablePlayer);
-
-            Utils.TeleportPlayerToSceneSettings();
             TrailManager.updateAllObjects();
+            Utils.TeleportPlayerToSceneSettings();
         }
     }
 }
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR // Custom Editor
 [CustomEditor(typeof(SceneSettings))]
 public class SceneSettingsEditor : Editor
 {

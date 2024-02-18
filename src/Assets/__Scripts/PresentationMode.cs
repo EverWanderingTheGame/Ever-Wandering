@@ -46,7 +46,7 @@ public class PresentationMode : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.RightArrow))
+            if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.RightArrow)) && !GameHUD.isPaused)
             {
                 posIndex++;
                 if (posIndexMax == posIndex) posIndex = 0;
@@ -57,7 +57,7 @@ public class PresentationMode : MonoBehaviour
 
                 GameManager.instance.player.SetActive(false);
             }
-            else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftArrow))
+            else if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftArrow)) && !GameHUD.isPaused)
             {
                 posIndex--;
                 if (0 > posIndex) posIndex = 0;
@@ -72,6 +72,7 @@ public class PresentationMode : MonoBehaviour
             if (posIndex == 3)
             {
                 GameManager.instance.player.SetActive(true);
+                AudioManager.instance.Stop("ForestAmbiance");
             }
         }
     }

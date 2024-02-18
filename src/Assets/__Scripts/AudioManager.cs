@@ -7,6 +7,7 @@ using UnityEditor;
 #endif
 
 [ExecuteInEditMode]
+[DefaultExecutionOrder(-19999)]
 public class AudioManager : MonoBehaviour
 {
     [Header("Audio Clips")]
@@ -30,18 +31,7 @@ public class AudioManager : MonoBehaviour
         }
 
         deleteAudioSources();
-
-        foreach (Sound s in sounds)
-        {
-            s.source = s.sourceObject.AddComponent<AudioSource>();
-
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.spatialBlend = s.spatialBlend;
-            s.source.time = s.RandomizeTime ? UnityEngine.Random.Range(0f, s.clip.length) : 0f;
-            s.source.loop = s.loop;
-        }
+        createAudioSources();
     }
 
     public void Play(string name, float Volume = 0f)
@@ -73,6 +63,21 @@ public class AudioManager : MonoBehaviour
             GameObject source = s.sourceObject;
 
             DestroyImmediate(source.GetComponent<AudioSource>());
+        }
+    }
+
+    public void createAudioSources()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source = s.sourceObject.AddComponent<AudioSource>();
+
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.spatialBlend = s.spatialBlend;
+            s.source.time = s.RandomizeTime ? UnityEngine.Random.Range(0f, s.clip.length) : 0f;
+            s.source.loop = s.loop;
         }
     }
 

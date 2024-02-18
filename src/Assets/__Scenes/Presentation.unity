@@ -411,7 +411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.6057, y: -10.9212}
+  m_AnchoredPosition: {x: 32.6, y: -10.9212}
   m_SizeDelta: {x: 12.9758, y: 1.1397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &38086149
@@ -961,7 +961,7 @@ Transform:
   m_GameObject: {fileID: 110484788}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.55, y: 0.458, z: 0}
+  m_LocalPosition: {x: 32.55, y: 0.436, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1305,7 +1305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.30128, y: -12.541199}
+  m_AnchoredPosition: {x: 34.3, y: -12.5}
   m_SizeDelta: {x: 3839.9998, y: 2160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &151448604
@@ -1525,7 +1525,7 @@ Transform:
   m_GameObject: {fileID: 188094335}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.5096, y: 0.56, z: 0}
+  m_LocalPosition: {x: 35.5096, y: 0.549, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2652,7 +2652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40.02, y: -0.37}
+  m_AnchoredPosition: {x: 40, y: 0}
   m_SizeDelta: {x: 10.9572, y: 2.8535}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329183504
@@ -3213,7 +3213,7 @@ Transform:
   m_GameObject: {fileID: 357848055}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 60.30037, y: -2.5418084, z: 0}
+  m_LocalPosition: {x: 60.30037, y: -2.581, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5272,7 +5272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.64, y: -7.84}
+  m_AnchoredPosition: {x: 34.6, y: -7.84}
   m_SizeDelta: {x: 10.9572, y: 2.3263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998711789
@@ -5574,7 +5574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30.46128, y: -12.641199}
+  m_AnchoredPosition: {x: 30.4, y: -12.6}
   m_SizeDelta: {x: 442, y: 442}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079825954
@@ -109887,7 +109887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.6057, y: -10.041399}
+  m_AnchoredPosition: {x: 32.6, y: -10.041399}
   m_SizeDelta: {x: 12.9758, y: 1.1397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336214204
@@ -110013,7 +110013,7 @@ Transform:
   m_GameObject: {fileID: 1360578193}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.63309, y: -2.3202581, z: 0}
+  m_LocalPosition: {x: 52.63309, y: -2.349, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -111674,7 +111674,7 @@ Transform:
   m_GameObject: {fileID: 1610928290}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 41.85371, y: 0.56446993, z: 0}
+  m_LocalPosition: {x: 41.85371, y: 0.553, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -112447,7 +112447,7 @@ Transform:
   m_GameObject: {fileID: 1739739903}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65.5, y: -3.417, z: 0}
+  m_LocalPosition: {x: 65.5, y: -3.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -130119,11 +130119,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disablePlayer: 1
   disablePlayerMovement: 0
+  StartingLightPower: 100
   disableHUD: 1
   disablePauseMenu: 0
   disableCameraFX: 1
   disableCursor: 1
   muteAudio: 1
+  disableLoadingScreen: 1
+  disableHUDInEditMode: 1
 --- !u!114 &7699327188007680115
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class PlayerHeadAnimator : MonoBehaviour
 
     void Update()
     {
-        if (!GameHUD.isPaused)
+        if (!GameHUD.isPaused || LevelManager.instance.isLoading)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal");
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
