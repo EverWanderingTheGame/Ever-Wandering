@@ -421,7 +421,7 @@ VisualEffect:
       - m_Value: 0.4
         m_Name: Thickness
         m_Overridden: 1
-      - m_Value: 0.0014000672
+      - m_Value: 0.58265555
         m_Name: Alpha
         m_Overridden: 1
     m_Vector2f:
@@ -431,18 +431,18 @@ VisualEffect:
       - m_Value: {x: -5.87, y: -2.43, z: 0}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: -3.6069002, y: -2.6288002, z: 0}
+      - m_Value: {x: -5.2889104, y: -1.6794684, z: 0}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: -1.6671, y: -2.7991998, z: 0}
+      - m_Value: {x: -4.790834, y: -1.0361555, z: 0}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: 0.5959997, y: -2.998, z: 0}
+      - m_Value: {x: -4.2097445, y: -0.2856238, z: 0.06445265}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 6, y: 3.4117649, z: 0, w: 0.0014000672}
+      - m_Value: {x: 6, y: 3.4117649, z: 0, w: 0.58265555}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -489,7 +489,7 @@ Transform:
   m_GameObject: {fileID: 217719636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0899997, y: -6.6099997, z: -10}
+  m_LocalPosition: {x: 4.0899997, y: -6.5499997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -618,7 +618,7 @@ Camera:
   far clip plane: 1000
   field of view: 70
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -923,7 +923,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.5686275, b: 0, a: 1}
-  m_Intensity: 0.0014000672
+  m_Intensity: 0.58265555
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 0000000069d48ac0
@@ -1731,7 +1731,7 @@ Transform:
   m_GameObject: {fileID: 1598045045}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1315498, y: -0.09940004, z: 0}
+  m_LocalPosition: {x: -0.29054475, y: 0.37526584, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1754,7 +1754,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.5686275, b: 0, a: 1}
-  m_Intensity: 0.0016800808
+  m_Intensity: 0.6991867
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 0000000069d48ac0
@@ -2187,7 +2187,7 @@ Transform:
   m_GameObject: {fileID: 2006385685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0899997, y: -6.6099997, z: -10}
+  m_LocalPosition: {x: 4.0899997, y: -6.5499997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2216,7 +2216,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1229252627894602961}
   m_Lens:
     FieldOfView: 70
-    OrthographicSize: 8
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2271,7 +2271,7 @@ Transform:
   m_GameObject: {fileID: 2087244961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.10145, y: -0.18459988, z: 0}
+  m_LocalPosition: {x: -0.53958297, y: 0.6969223, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2294,7 +2294,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.5686275, b: 0, a: 1}
-  m_Intensity: 0.0016800808
+  m_Intensity: 0.6991867
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 0000000069d48ac0
@@ -2352,7 +2352,7 @@ Transform:
   m_GameObject: {fileID: 2108144316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2329998, y: -0.28399992, z: 0}
+  m_LocalPosition: {x: -0.8301277, y: 1.0721881, z: 0.06445265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18185,8 +18185,8 @@ GameObject:
   - component: {fileID: 7600006704200724037}
   - component: {fileID: 787137360563219980}
   - component: {fileID: 7600006704200724038}
-  - component: {fileID: 7600006704200724208}
-  - component: {fileID: 7600006704200724209}
+  - component: {fileID: 7600006704200724216}
+  - component: {fileID: 7600006704200724217}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -18250,7 +18250,7 @@ MonoBehaviour:
   ChargingText: {fileID: 1398067563}
   ConnenctionDistance: 7
   ColorIntensity: 6
---- !u!82 &7600006704200724208
+--- !u!82 &7600006704200724216
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18346,7 +18346,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &7600006704200724209
+--- !u!82 &7600006704200724217
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19055,7 +19055,7 @@ MonoBehaviour:
   pauseMenuFX: {fileID: 2519559970641529265}
   PlayerHUD: {fileID: 3362040977105806051}
   CameraFX: {fileID: 6635482055919885094}
-  unpauseable: 1
+  unpauseable: 0
 --- !u!1 &8870971830073451856
 GameObject:
   m_ObjectHideFlags: 0
@@ -19184,7 +19184,7 @@ MonoBehaviour:
     spatialBlend: 1
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 7600006704200724209}
+    source: {fileID: 7600006704200724217}
   - name: Pause
     clip: {fileID: 8300000, guid: 7eeb4198f0cdad64b891df385d548162, type: 3}
     sourceObject: {fileID: 217719636}
