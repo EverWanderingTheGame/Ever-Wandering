@@ -9,11 +9,13 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 #endif
 
+[DisallowMultipleComponent]
 [ExecuteInEditMode]
 [DefaultExecutionOrder(-19998)]
 public class SceneSettings : MonoBehaviour
 {
     [Header("OnStart Scene Settings")]
+    [SerializeField] public SceneReference nextScene;
     [Space, Header("Player")]
     [SerializeField] public bool disablePlayer = false;
     [SerializeField] public bool disablePlayerMovement = false;
@@ -25,6 +27,7 @@ public class SceneSettings : MonoBehaviour
     [Tooltip("Only in BUILD")] public bool disableCursor = false;
     [Space, Header("Camera")]
     [SerializeField] public Transform cameraTarget;
+    [SerializeField] public Vector2 cameraDeadZone = new Vector2(.2f, .1f);
     [SerializeField, Range(2, 20)] public float lensOrthoSize = 7;
     [Space, Header("Audio")]
     [SerializeField] public bool muteAudio = false;
@@ -35,8 +38,8 @@ public class SceneSettings : MonoBehaviour
 
     GameHUD gameHUD;
     PlayerMovement playerMovement;
-    PlayerHeadAnimator playerHeadAnimator;
     CinemachineVirtualCamera c_VirtualCam;
+    CinemachineComponentBase componentBase;
 
 
     void Awake()
@@ -68,7 +71,6 @@ public class SceneSettings : MonoBehaviour
 
         gameHUD = FindObjectOfType<GameHUD>(true);
         playerMovement = FindObjectOfType<PlayerMovement>(true);
-        playerHeadAnimator = FindObjectOfType<PlayerHeadAnimator>(true);
 
         applySceneSettings();
     }
@@ -82,9 +84,6 @@ public class SceneSettings : MonoBehaviour
         Cursor.visible = !disableCursor;
 #endif
 
-        playerMovement.enabled = !disablePlayerMovement;
-        playerHeadAnimator.enabled = !disablePlayerMovement;
-
         if (StartingLightPower != -1) TrailManager.LightPower = StartingLightPower;
 
         if (!Application.isPlaying) FindObjectOfType<LevelManager>()._loaderCanvas.SetActive(!disableLoadingScreen);
@@ -97,6 +96,7 @@ public class SceneSettings : MonoBehaviour
 
         if (Application.isPlaying) // If in GAME
         {
+            playerMovement.disablePlayerMovement = disablePlayerMovement;
             if (cameraTarget != null)
             {
                 c_VirtualCam.m_LookAt = cameraTarget;
@@ -106,6 +106,16 @@ public class SceneSettings : MonoBehaviour
             {
                 c_VirtualCam.m_LookAt = GameManager.instance.player.transform;
                 c_VirtualCam.m_Follow = GameManager.instance.player.transform;
+            }
+            if (cameraDeadZone != Vector2.zero)
+            {
+                componentBase = c_VirtualCam.GetCinemachineComponent(CinemachineCore.Stage.Body) as CinemachineComponentBase;
+                if (componentBase is CinemachineFramingTransposer)
+                {
+                    var framingTransposer = componentBase as CinemachineFramingTransposer;
+                    framingTransposer.m_SoftZoneWidth = cameraDeadZone.x;
+                    framingTransposer.m_SoftZoneHeight = cameraDeadZone.y;
+                }
             }
         }
     }
@@ -125,7 +135,6 @@ public class SceneSettings : MonoBehaviour
 [CustomEditor(typeof(SceneSettings))]
 public class SceneSettingsEditor : Editor
 {
-    private GUIStyle boldLabelStyle;
     private GUIStyle buttonStyle;
 
     bool disablePlayer;

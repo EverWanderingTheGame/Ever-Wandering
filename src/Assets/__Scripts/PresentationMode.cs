@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+[DisallowMultipleComponent]
 [ExecuteInEditMode]
 public class PresentationMode : MonoBehaviour
 {
@@ -48,14 +49,7 @@ public class PresentationMode : MonoBehaviour
         {
             if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.RightArrow)) && !GameHUD.isPaused)
             {
-                posIndex++;
-                if (posIndexMax == posIndex) posIndex = 0;
-
-                animator.SetInteger("Scene", posIndex);
-
-                Player.transform.position = posistions[posIndex].transform.position;
-
-                GameManager.instance.player.SetActive(false);
+                NextSlide();
             }
             else if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftArrow)) && !GameHUD.isPaused)
             {
@@ -75,6 +69,18 @@ public class PresentationMode : MonoBehaviour
                 AudioManager.instance.Stop("ForestAmbiance");
             }
         }
+    }
+
+    public void NextSlide()
+    {
+        posIndex++;
+        if (posIndexMax == posIndex) posIndex = 0;
+
+        animator.SetInteger("Scene", posIndex);
+
+        Player.transform.position = posistions[posIndex].transform.position;
+
+        GameManager.instance.player.SetActive(false);
     }
 }
 

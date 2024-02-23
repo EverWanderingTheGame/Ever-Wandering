@@ -6617,13 +6617,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ffe6b553c4f6843864356eadecbb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: {fileID: 102900000, guid: 257d0795e34164f4b9e11c199a232baa, type: 3}
   disablePlayer: 0
   disablePlayerMovement: 0
+  StartingLightPower: 100
   disableHUD: 0
   disablePauseMenu: 0
   disableCameraFX: 0
   disableCursor: 0
+  cameraTarget: {fileID: 0}
+  cameraDeadZone: {x: 0.2, y: 0.1}
+  lensOrthoSize: 7
   muteAudio: 0
+  disableLoadingScreen: 1
+  disableHUDInEditMode: 1
 --- !u!483693784 &1104614330653661868
 TilemapRenderer:
   m_ObjectHideFlags: 0

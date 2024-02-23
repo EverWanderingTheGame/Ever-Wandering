@@ -54185,6 +54185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ffe6b553c4f6843864356eadecbb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene:
+    sceneAsset: {fileID: 0}
+    scenePath: 
   disablePlayer: 0
   disablePlayerMovement: 0
   StartingLightPower: 100
@@ -54193,6 +54196,7 @@ MonoBehaviour:
   disableCameraFX: 0
   disableCursor: 0
   cameraTarget: {fileID: 1863502642}
+  cameraDeadZone: {x: 0, y: 0}
   lensOrthoSize: 8
   muteAudio: 0
   disableLoadingScreen: 1

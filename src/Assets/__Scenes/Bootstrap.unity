@@ -489,7 +489,7 @@ Transform:
   m_GameObject: {fileID: 217719636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0899997, y: -6.5499997, z: -10}
+  m_LocalPosition: {x: 4.09, y: -6.5499997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2187,7 +2187,7 @@ Transform:
   m_GameObject: {fileID: 2006385685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0899997, y: -6.5499997, z: -10}
+  m_LocalPosition: {x: 4.09, y: -6.5499997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2528,6 +2528,9 @@ MonoBehaviour:
   controller: {fileID: 7600006704200724037}
   Head: {fileID: 5258963539782739785}
   runSpeed: 40
+  BodyAnimator: {fileID: 2274839505112987532}
+  HeadAnimator: {fileID: 749976515871055194}
+  disablePlayerMovement: 0
 --- !u!1 &830219072107880703
 GameObject:
   m_ObjectHideFlags: 0
@@ -7880,7 +7883,6 @@ GameObject:
   - component: {fileID: 6596945998115348092}
   - component: {fileID: 5258963539782739785}
   - component: {fileID: 749976515871055194}
-  - component: {fileID: 4846974267376827727}
   m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
@@ -8129,18 +8131,6 @@ RectTransform:
   m_AnchoredPosition: {x: -226.81744, y: -223.07877}
   m_SizeDelta: {x: 188, y: 16}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &4846974267376827727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3658720216832897499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23153c4f079c74a4cb54f0ac0cd98b63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &4949344542189554211
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -18003,7 +17993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6814286409038205588
 GameObject:
   m_ObjectHideFlags: 0
@@ -18185,8 +18175,8 @@ GameObject:
   - component: {fileID: 7600006704200724037}
   - component: {fileID: 787137360563219980}
   - component: {fileID: 7600006704200724038}
-  - component: {fileID: 7600006704200724216}
-  - component: {fileID: 7600006704200724217}
+  - component: {fileID: 7600006704200724310}
+  - component: {fileID: 7600006704200724311}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -18250,7 +18240,7 @@ MonoBehaviour:
   ChargingText: {fileID: 1398067563}
   ConnenctionDistance: 7
   ColorIntensity: 6
---- !u!82 &7600006704200724216
+--- !u!82 &7600006704200724310
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18346,7 +18336,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &7600006704200724217
+--- !u!82 &7600006704200724311
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19184,7 +19174,7 @@ MonoBehaviour:
     spatialBlend: 1
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 7600006704200724217}
+    source: {fileID: 7600006704200724311}
   - name: Pause
     clip: {fileID: 8300000, guid: 7eeb4198f0cdad64b891df385d548162, type: 3}
     sourceObject: {fileID: 217719636}

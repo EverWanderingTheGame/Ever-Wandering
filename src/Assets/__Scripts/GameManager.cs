@@ -17,4 +17,17 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F2)) // Take Screenshot
+        {
+#if !UNITY_EDITOR
+            StartCoroutine(Utils.CoroutineScreenshot());
+#else
+            ScreenCapture.CaptureScreenshot(Application.dataPath + "/Screenshot.png", 4);
+            Debug.Log("Screenshot taken \n" + Application.dataPath + "/Screenshot.png");
+#endif
+        }
+    }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+[DisallowMultipleComponent]
 [ExecuteInEditMode]
 [DefaultExecutionOrder(-19999)]
 public class AudioManager : MonoBehaviour

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7699327188317374141}
   m_Layer: 0
   m_Name: SceneSettings
-  m_TagString: DefaultPlayerSpawn
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,3 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ffe6b553c4f6843864356eadecbb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disablePlayer: 0
+  disablePlayerMovement: 0
+  StartingLightPower: 100
+  disableHUD: 0
+  disablePauseMenu: 0
+  disableCameraFX: 0
+  disableCursor: 0
+  cameraTarget: {fileID: 0}
+  lensOrthoSize: 7
+  muteAudio: 0
+  disableLoadingScreen: 1
+  disableHUDInEditMode: 1
