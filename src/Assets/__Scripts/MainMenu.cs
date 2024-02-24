@@ -5,21 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string StartScene = "DemoScene";
-    public string PresentationScene = "Presentation";
+    public SceneReference StartScene;
+    public SceneReference PresentationScene;
 
     public void PlayGame()
     {
-        LevelManager.instance.LoadScene(StartScene);
+        LevelManager.instance.LoadScene(Utils.getSceneNameFromSceneReference(StartScene));
     }
 
     public void Presentation()
     {
-        LevelManager.instance.LoadScene(PresentationScene);
+        LevelManager.instance.LoadScene(Utils.getSceneNameFromSceneReference(PresentationScene));
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Fullscreen()
+    {
+        
     }
 }

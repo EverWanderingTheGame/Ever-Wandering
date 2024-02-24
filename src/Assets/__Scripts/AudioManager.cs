@@ -77,6 +77,7 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.spatialBlend = s.spatialBlend;
+            s.source.playOnAwake = s.playOnAwake;
             s.source.time = s.RandomizeTime ? UnityEngine.Random.Range(0f, s.clip.length) : 0f;
             s.source.loop = s.loop;
         }

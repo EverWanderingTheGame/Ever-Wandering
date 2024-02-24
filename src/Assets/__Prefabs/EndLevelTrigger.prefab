@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.773293, y: 10.129608}
+  m_Size: {x: 14.773293, y: 10.358219}
   m_EdgeRadius: 0
 --- !u!114 &8187679259331352102
 MonoBehaviour:
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerType: 2
-  nextScene: {fileID: 102900000, guid: 257d0795e34164f4b9e11c199a232baa, type: 3}
   OnEnterTrigger:
     m_PersistentCalls:
       m_Calls: []

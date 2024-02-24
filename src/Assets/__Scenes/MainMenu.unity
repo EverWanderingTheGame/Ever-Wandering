@@ -26189,8 +26189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bff569646a01b4ebd1692a90304ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartScene: DemoScene
-  PresentationScene: Presentation
+  StartScene:
+    sceneAsset: {fileID: 102900000, guid: 24f5ab00718cc9e418561bb0d42f9c77, type: 3}
+    scenePath: Assets/__Scenes/DemoScene.unity
+  PresentationScene:
+    sceneAsset: {fileID: 102900000, guid: d1718d92ada987547815eb7d62850765, type: 3}
+    scenePath: Assets/__Scenes/Presentation.unity
 --- !u!1 &953231281
 GameObject:
   m_ObjectHideFlags: 0

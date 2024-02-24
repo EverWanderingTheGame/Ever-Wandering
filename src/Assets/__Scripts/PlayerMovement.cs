@@ -38,10 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed * (disablePlayerMovement ? 0 : 1);
+        
         if (!GameHUD.isPaused && !disablePlayerMovement && !LevelManager.instance.isLoading)
         {
-            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
             BodyAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
             HeadAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
@@ -56,6 +56,15 @@ public class PlayerMovement : MonoBehaviour
             else orthoSize = Mathf.Lerp(orthoSize, _orthoSize, 10 * Time.deltaTime);
             orthoSize = Mathf.Round(orthoSize * 100) / 100;
             _virtualCamera.m_Lens.OrthographicSize = orthoSize;
+        } else
+        {
+            BodyAnimator.SetFloat("Speed", 0);
+            HeadAnimator.SetFloat("Speed", 0);
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = false;
+            }
         }
     }
 

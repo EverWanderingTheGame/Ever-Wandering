@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public static class Utils
@@ -78,5 +79,10 @@ public static class Utils
     public static string RemoveLast(this string Source, string Find)
     {
         return ReplaceLast(Source, Find, "");
+    }
+
+    public static string getSceneNameFromSceneReference(SceneReference sceneReference)
+    {
+        return FixSceneName(sceneReference.ScenePath);
     }
 }

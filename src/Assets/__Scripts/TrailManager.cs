@@ -38,6 +38,8 @@ public class TrailManager : MonoBehaviour
     private Color VFXColor;
     float Distance;
     float NearestDistance = float.PositiveInfinity;
+    
+    public static bool runned = false;
 
     private void OnEnable()
     {
@@ -128,11 +130,19 @@ public class TrailManager : MonoBehaviour
         }
 
         NearestDistance = float.PositiveInfinity;
+
+        if (LightPower <= 0 && !runned)
+        {
+            AudioManager.instance.Play("Death");
+            GameManager.instance.playerDead();
+            runned = true;
+        }
     }
 
     public static void updateAllObjects()
     {
         AllObjects = GameObject.FindGameObjectsWithTag("Light");
+        runned = false;
     }
 }
 

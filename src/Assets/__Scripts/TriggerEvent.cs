@@ -36,7 +36,7 @@ public class TriggerEvent : MonoBehaviour
     {
         if(movePlayerToTheEnd)
         {
-            FindAnyObjectByType<CharacterController2D>().Move(35 * Time.fixedDeltaTime, false, false);
+            FindAnyObjectByType<CharacterController2D>().Move(40 * Time.fixedDeltaTime, false, false);
         }
     }
 
@@ -44,16 +44,25 @@ public class TriggerEvent : MonoBehaviour
     {
         if (collider.gameObject.tag == "Player" && collider.GetType() == typeof(BoxCollider2D))
         {
-            if (triggerType == TriggerType.Debug)
+            if (triggerType == TriggerType.Debug) // Debug
             {
                 Debug.Log("Player Entered Debug Trigger");
-            } else if (triggerType == TriggerType.EndLevel) {
+            } else if (triggerType == TriggerType.EndLevel) // End Level 
+            {
                 sceneSettings.disablePlayerMovement = true;
                 sceneSettings.disableHUD = true;
                 sceneSettings.muteAudio = true;
                 sceneSettings.applySceneSettings();
 
                 movePlayerToTheEnd = true;
+            } else if (triggerType == TriggerType.Death) // Dead
+            {
+                AudioManager.instance.Play("Death");
+                GameManager.instance.playerDead();
+            } else if (triggerType == TriggerType.DetachCamera) // Detach Camera
+            {
+                _virtualCamera.LookAt = null;
+                _virtualCamera.Follow = null;
             }
 
             OnEnterTrigger.Invoke();
@@ -69,7 +78,7 @@ public class TriggerEvent : MonoBehaviour
                 Debug.Log("Player Exited Debug Trigger");
             } else if (triggerType == TriggerType.EndLevel)
             {
-                LevelManager.instance.LoadScene(Utils.FixSceneName(sceneSettings.nextScene.ScenePath));
+                LevelManager.instance.LoadScene(Utils.getSceneNameFromSceneReference(sceneSettings.nextScene));
 
                 movePlayerToTheEnd = false;
             }
@@ -94,13 +103,15 @@ public class TriggerEvent : MonoBehaviour
         if (_showOnlyWhenSelected) return;
 
         if (_collider == null) _collider = GetComponent<Collider2D>();
-        _gizmoColor.a = 0.1f;
+        _gizmoColor.a = 0.05f;
         Gizmos.color = _gizmoColor;
         Gizmos.DrawCube(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
 
         _gizmoColor.a = 1f;
         Gizmos.color = _gizmoColor;
         Gizmos.DrawWireCube(_collider.transform.position +  new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
+
+        Gizmos.DrawIcon(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), "Assets/Resources/triggerZone.png", true, _gizmoColor * 2f);
     }
 
     void OnDrawGizmosSelected()
@@ -116,6 +127,8 @@ public class TriggerEvent : MonoBehaviour
         _gizmoColor.a = 1f;
         Gizmos.color = _gizmoColor;
         Gizmos.DrawWireCube(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
+
+        Gizmos.DrawIcon(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), "Assets/Resources/triggerZone.png", true, _gizmoColor * 2f);
     }
 }
 
@@ -124,5 +137,6 @@ public enum TriggerType
     None,
     Debug,
     EndLevel,
-    Dead,
+    Death,
+    DetachCamera
 }

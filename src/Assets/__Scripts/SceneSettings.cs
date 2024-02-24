@@ -15,6 +15,7 @@ using UnityEditor.SceneManagement;
 public class SceneSettings : MonoBehaviour
 {
     [Header("OnStart Scene Settings")]
+    [SerializeField] public SceneReference curScene;
     [SerializeField] public SceneReference nextScene;
     [Space, Header("Player")]
     [SerializeField] public bool disablePlayer = false;
@@ -28,6 +29,7 @@ public class SceneSettings : MonoBehaviour
     [Space, Header("Camera")]
     [SerializeField] public Transform cameraTarget;
     [SerializeField] public Vector2 cameraDeadZone = new Vector2(.2f, .1f);
+    [SerializeField] public Vector2 cameraSoftZone = new Vector2(.8f, .8f);
     [SerializeField, Range(2, 20)] public float lensOrthoSize = 7;
     [Space, Header("Audio")]
     [SerializeField] public bool muteAudio = false;
@@ -84,8 +86,6 @@ public class SceneSettings : MonoBehaviour
         Cursor.visible = !disableCursor;
 #endif
 
-        if (StartingLightPower != -1) TrailManager.LightPower = StartingLightPower;
-
         if (!Application.isPlaying) FindObjectOfType<LevelManager>()._loaderCanvas.SetActive(!disableLoadingScreen);
         if (disableHUDInEditMode && !Application.isPlaying) gameHUD.PlayerHUD.SetActive(false);
 
@@ -113,6 +113,16 @@ public class SceneSettings : MonoBehaviour
                 if (componentBase is CinemachineFramingTransposer)
                 {
                     var framingTransposer = componentBase as CinemachineFramingTransposer;
+                    framingTransposer.m_DeadZoneWidth = cameraDeadZone.x;
+                    framingTransposer.m_DeadZoneHeight = cameraDeadZone.y;
+                }
+            }
+            if (cameraSoftZone != Vector2.zero)
+            {
+                componentBase = c_VirtualCam.GetCinemachineComponent(CinemachineCore.Stage.Body) as CinemachineComponentBase;
+                if (componentBase is CinemachineFramingTransposer)
+                {
+                    var framingTransposer = componentBase as CinemachineFramingTransposer;
                     framingTransposer.m_SoftZoneWidth = cameraDeadZone.x;
                     framingTransposer.m_SoftZoneHeight = cameraDeadZone.y;
                 }
@@ -124,9 +134,24 @@ public class SceneSettings : MonoBehaviour
     {
         if (Application.isPlaying)
         {
+            if (StartingLightPower != -1) TrailManager.LightPower = StartingLightPower;
             GameManager.instance.player.SetActive(!disablePlayer);
             TrailManager.updateAllObjects();
             Utils.TeleportPlayerToSceneSettings();
+        }
+    }
+
+    public void reattachCamera()
+    {
+        if (cameraTarget != null)
+        {
+            c_VirtualCam.m_LookAt = cameraTarget;
+            c_VirtualCam.m_Follow = cameraTarget;
+        }
+        else
+        {
+            c_VirtualCam.m_LookAt = GameManager.instance.player.transform;
+            c_VirtualCam.m_Follow = GameManager.instance.player.transform;
         }
     }
 }
