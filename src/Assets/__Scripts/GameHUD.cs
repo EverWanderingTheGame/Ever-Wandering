@@ -5,13 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameHUD : MonoBehaviour
 {
+    public static GameHUD instance;
+
     public GameObject pauseMenu;
     public GameObject pauseMenuFX;
     public GameObject PlayerHUD;
     public GameObject CameraFX;
 
     [HideInInspector] public bool unpauseable;
-    public static bool isPaused;
+    //public static bool isPaused;
+
+    void Awake()
+    {
+        if (instance == null) { instance = this; } 
+        else { Destroy(gameObject); }
+    }
 
     void Start()
     {
@@ -20,9 +28,9 @@ public class GameHUD : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !unpauseable)
+        if(Input.GetKeyDown(KeyCode.Escape) && !unpauseable && GameManager.instance.gameState != GameState.Dialogue)
         {
-            if(isPaused)
+            if(GameManager.instance.gameState == GameState.Paused)
             {
                 ResumeGame();
             }
@@ -43,7 +51,7 @@ public class GameHUD : MonoBehaviour
         AudioManager.instance.Play("Pause");
 
         Time.timeScale = 0f;
-        isPaused = true;
+        GameManager.instance.gameState = GameState.Paused;
     }
 
     public void ResumeGame()
@@ -55,7 +63,7 @@ public class GameHUD : MonoBehaviour
         AudioManager.instance.Stop("Pause");
 
         Time.timeScale = 1f;
-        isPaused = false;
+        GameManager.instance.gameState = GameState.Playing;
     }
 
     public void GoToMainMenu()

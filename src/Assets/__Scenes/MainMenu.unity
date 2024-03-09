@@ -53121,6 +53121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smoke
       objectReference: {fileID: 0}
+    - target: {fileID: 2210625815741054147, guid: 3c9f6a6cd75f6dd42b0de524eaaae127, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9212960634293066437, guid: 3c9f6a6cd75f6dd42b0de524eaaae127, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.11
@@ -54189,6 +54193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ffe6b553c4f6843864356eadecbb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curScene:
+    sceneAsset: {fileID: 0}
+    scenePath: 
   nextScene:
     sceneAsset: {fileID: 0}
     scenePath: 
@@ -54201,6 +54208,7 @@ MonoBehaviour:
   disableCursor: 0
   cameraTarget: {fileID: 1863502642}
   cameraDeadZone: {x: 0, y: 0}
+  cameraSoftZone: {x: 0.8, y: 0.8}
   lensOrthoSize: 8
   muteAudio: 0
   disableLoadingScreen: 1

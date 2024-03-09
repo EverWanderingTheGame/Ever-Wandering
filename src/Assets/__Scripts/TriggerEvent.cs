@@ -110,8 +110,6 @@ public class TriggerEvent : MonoBehaviour
         _gizmoColor.a = 1f;
         Gizmos.color = _gizmoColor;
         Gizmos.DrawWireCube(_collider.transform.position +  new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
-
-        Gizmos.DrawIcon(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), "Assets/Resources/triggerZone.png", true, _gizmoColor * 2f);
     }
 
     void OnDrawGizmosSelected()
@@ -127,8 +125,6 @@ public class TriggerEvent : MonoBehaviour
         _gizmoColor.a = 1f;
         Gizmos.color = _gizmoColor;
         Gizmos.DrawWireCube(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
-
-        Gizmos.DrawIcon(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), "Assets/Resources/triggerZone.png", true, _gizmoColor * 2f);
     }
 }
 

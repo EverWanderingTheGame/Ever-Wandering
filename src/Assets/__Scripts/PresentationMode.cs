@@ -40,6 +40,8 @@ public class PresentationMode : MonoBehaviour
             Player.transform.position = posistions[posIndex].transform.position;
 
             posIndexMax = posistions.Length;
+
+            GameManager.instance.gameState = GameState.Prsentation;
         }
     }
 
@@ -47,11 +49,11 @@ public class PresentationMode : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.RightArrow)) && !GameHUD.isPaused)
+            if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.RightArrow)) && GameManager.instance.gameState == GameState.Prsentation)
             {
                 NextSlide();
             }
-            else if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftArrow)) && !GameHUD.isPaused)
+            else if ((Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftArrow)) && GameManager.instance.gameState == GameState.Prsentation)
             {
                 posIndex--;
                 if (0 > posIndex) posIndex = 0;

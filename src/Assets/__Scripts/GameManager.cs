@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameState gameState = GameState.Playing;
 
     public GameObject player;
     public GameObject _loading;
@@ -35,10 +36,30 @@ public class GameManager : MonoBehaviour
             Debug.Log("Screenshot taken \n" + Application.dataPath + "/Screenshot.png");
 #endif
         }
+
+        if (Application.isPlaying)
+        {
+            if (gameState == GameState.Dialogue)
+            {
+                GameHUD.instance.unpauseable = true;
+            }
+            else
+            {
+                GameHUD.instance.unpauseable = false;
+            }
+        }
     }
 
     public void playerDead()
     {
         LevelManager.instance.LoadScene(Utils.getSceneNameFromSceneReference(FindObjectOfType<SceneSettings>().curScene));
     }
+}
+
+public enum GameState
+{
+    Playing,
+    Paused,
+    Dialogue,
+    Prsentation
 }

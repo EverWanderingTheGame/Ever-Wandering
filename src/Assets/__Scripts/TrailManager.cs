@@ -131,7 +131,7 @@ public class TrailManager : MonoBehaviour
 
         NearestDistance = float.PositiveInfinity;
 
-        if (LightPower <= 0 && !runned)
+        if (LightPower <= 0 && !runned && Application.isPlaying)
         {
             AudioManager.instance.Play("Death");
             GameManager.instance.playerDead();

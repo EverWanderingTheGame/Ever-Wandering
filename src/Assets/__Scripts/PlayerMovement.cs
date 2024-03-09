@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed * (disablePlayerMovement ? 0 : 1);
         
-        if (!GameHUD.isPaused && !disablePlayerMovement && !LevelManager.instance.isLoading)
+        if ((GameManager.instance.gameState == GameState.Playing || GameManager.instance.gameState == GameState.Prsentation) && !disablePlayerMovement && !LevelManager.instance.isLoading)
         {
             BodyAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
             HeadAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
