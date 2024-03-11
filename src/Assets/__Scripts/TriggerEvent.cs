@@ -8,7 +8,10 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D))]
 public class TriggerEvent : MonoBehaviour
 {
+    public bool triggered = false;
+    public bool TriggerOnce = false;
     public TriggerType triggerType;
+    public TriggerObjectType triggerObjectType;
     [Header("Custom Events")]
     [Space]
     public UnityEvent OnEnterTrigger;
@@ -34,7 +37,7 @@ public class TriggerEvent : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(movePlayerToTheEnd)
+        if (movePlayerToTheEnd)
         {
             FindAnyObjectByType<CharacterController2D>().Move(40 * Time.fixedDeltaTime, false, false);
         }
@@ -42,12 +45,19 @@ public class TriggerEvent : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player" && collider.GetType() == typeof(BoxCollider2D))
+        if (
+            (
+                (collider.gameObject.tag == "Player" && collider.GetType() == typeof(BoxCollider2D) && triggerObjectType == TriggerObjectType.Player) ||
+                (collider.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
+            ) &&
+            triggered == false
+        )
         {
             if (triggerType == TriggerType.Debug) // Debug
             {
-                Debug.Log("Player Entered Debug Trigger");
-            } else if (triggerType == TriggerType.EndLevel) // End Level 
+                Debug.Log(triggerObjectType.ToString()+" Entered Debug Trigger");
+            }
+            else if (triggerType == TriggerType.EndLevel && triggerObjectType == TriggerObjectType.Player) // End Level 
             {
                 sceneSettings.disablePlayerMovement = true;
                 sceneSettings.disableHUD = true;
@@ -55,45 +65,67 @@ public class TriggerEvent : MonoBehaviour
                 sceneSettings.applySceneSettings();
 
                 movePlayerToTheEnd = true;
-            } else if (triggerType == TriggerType.Death) // Dead
+            }
+            else if (triggerType == TriggerType.Death && triggerObjectType == TriggerObjectType.Player) // Dead
             {
                 AudioManager.instance.Play("Death");
                 GameManager.instance.playerDead();
-            } else if (triggerType == TriggerType.DetachCamera) // Detach Camera
+            }
+            else if (triggerType == TriggerType.DetachCamera && triggerObjectType == TriggerObjectType.Player) // Detach Camera
             {
                 _virtualCamera.LookAt = null;
                 _virtualCamera.Follow = null;
             }
+            else if (triggerType == TriggerType.BoxVFX && triggerObjectType == TriggerObjectType.Box)
+            {
+                collider.gameObject.GetComponent<Box>().EnableVFX();
+            }
 
             OnEnterTrigger.Invoke();
+            triggered = true;
         }
+
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collider)
     {
-        if (collision.gameObject.tag == "Player" && collision.GetType() == typeof(BoxCollider2D))
+        if (
+            (collider.gameObject.tag == "Player" && collider.GetType() == typeof(BoxCollider2D) && triggerObjectType == TriggerObjectType.Player) ||
+            (collider.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
+        )
         {
             if (triggerType == TriggerType.Debug)
             {
                 Debug.Log("Player Exited Debug Trigger");
-            } else if (triggerType == TriggerType.EndLevel)
+            }
+            else if (triggerType == TriggerType.EndLevel)
             {
                 LevelManager.instance.LoadScene(Utils.getSceneNameFromSceneReference(sceneSettings.nextScene));
 
                 movePlayerToTheEnd = false;
             }
+            else if (triggerType == TriggerType.BoxVFX && triggerObjectType == TriggerObjectType.Box)
+            {
+                collider.gameObject.GetComponent<Box>().DisableVFX();
+            }
+
+            triggered = TriggerOnce ? true : false;
         }
     }
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && collision.GetType() == typeof(BoxCollider2D))
+        if (
+            (collision.gameObject.tag == "Player" && collision.GetType() == typeof(BoxCollider2D) && triggerObjectType == TriggerObjectType.Player) ||
+            (collision.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
+        )
         {
             if (triggerType == TriggerType.EndLevel)
             {
                 _virtualCamera.LookAt = null;
                 _virtualCamera.Follow = null;
             }
+
         }
     }
 
@@ -109,7 +141,7 @@ public class TriggerEvent : MonoBehaviour
 
         _gizmoColor.a = 1f;
         Gizmos.color = _gizmoColor;
-        Gizmos.DrawWireCube(_collider.transform.position +  new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
+        Gizmos.DrawWireCube(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
     }
 
     void OnDrawGizmosSelected()
@@ -134,5 +166,12 @@ public enum TriggerType
     Debug,
     EndLevel,
     Death,
-    DetachCamera
+    DetachCamera,
+    BoxVFX
+}
+
+public enum TriggerObjectType
+{
+    Player,
+    Box
 }

@@ -224,7 +224,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 155358060}
@@ -421,28 +421,28 @@ VisualEffect:
       - m_Value: 0.4
         m_Name: Thickness
         m_Overridden: 1
-      - m_Value: 0.5297433
+      - m_Value: 0.068471104
         m_Name: Alpha
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0, y: 0, z: 0}
+      - m_Value: {x: 11.37, y: 7.1000004, z: 0}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: 0.20860004, y: -1.0493, z: 0}
+      - m_Value: {x: 11.183101, y: 4.9891505, z: 0}
         m_Name: Pos2
         m_Overridden: 1
-      - m_Value: {x: 0.38739967, y: -1.9486997, z: 0}
+      - m_Value: {x: 11.022901, y: 3.1798503, z: 0}
         m_Name: Pos3
         m_Overridden: 1
-      - m_Value: {x: 0.5959997, y: -2.998, z: 0}
+      - m_Value: {x: 10.836001, y: 1.069, z: 0.06445278}
         m_Name: Pos4
         m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 6, y: 3.4117649, z: 0, w: 0.5297433}
+      - m_Value: {x: 5.6037736, y: 3.5067644, z: 0.6079567, w: 0.068471104}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -472,9 +472,9 @@ GameObject:
   - component: {fileID: 217719640}
   - component: {fileID: 217719639}
   - component: {fileID: 217719638}
-  - component: {fileID: 217719723}
-  - component: {fileID: 217719725}
-  - component: {fileID: 217719724}
+  - component: {fileID: 217719826}
+  - component: {fileID: 217719828}
+  - component: {fileID: 217719827}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -491,7 +491,7 @@ Transform:
   m_GameObject: {fileID: 217719636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.959999, y: -4.12, z: -10}
+  m_LocalPosition: {x: 21.329998, y: 2.9800007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -636,7 +636,7 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!82 &217719723
+--- !u!82 &217719826
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -732,7 +732,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &217719724
+--- !u!82 &217719827
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -828,7 +828,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &217719725
+--- !u!82 &217719828
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1094,7 +1094,7 @@ Transform:
   m_GameObject: {fileID: 527571067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.00000011920929, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1116,11 +1116,11 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.5686275, b: 0, a: 1}
-  m_Intensity: 0.5297433
+  m_Color: {r: 0.9339623, g: 0.58446074, b: 0.101326115, a: 1}
+  m_Intensity: 0.068471104
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000069d48ac0
+  m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0415\u043D\u0435\u0440\u0433\u0438\u044F 95%"
+  m_text: "\u0415\u043D\u0435\u0440\u0433\u0438\u044F 100%"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2bcc574415d79ae4f8f6382d88bbb1cf, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: d799ee10364daa1428b0af9fd579532e, type: 2}
@@ -1925,7 +1925,7 @@ Transform:
   m_GameObject: {fileID: 1598045045}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.10430002, y: -0.52465, z: 0}
+  m_LocalPosition: {x: -0.09344959, y: -1.0554248, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1947,11 +1947,11 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.5686275, b: 0, a: 1}
-  m_Intensity: 0.635692
+  m_Color: {r: 0.9339623, g: 0.58446074, b: 0.101326115, a: 1}
+  m_Intensity: 0.08216533
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000069d48ac0
+  m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2138,10 +2138,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1947129203}
-  - component: {fileID: 1947129286}
-  - component: {fileID: 1947129289}
-  - component: {fileID: 1947129288}
-  - component: {fileID: 1947129287}
+  - component: {fileID: 1947129389}
+  - component: {fileID: 1947129392}
+  - component: {fileID: 1947129391}
+  - component: {fileID: 1947129390}
   m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
@@ -2164,7 +2164,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1229252627894602961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1947129286
+--- !u!82 &1947129389
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2260,7 +2260,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129287
+--- !u!82 &1947129390
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2356,7 +2356,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129288
+--- !u!82 &1947129391
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2452,7 +2452,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129289
+--- !u!82 &1947129392
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2575,7 +2575,7 @@ Transform:
   m_GameObject: {fileID: 2006385685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.959999, y: -4.12, z: -10}
+  m_LocalPosition: {x: 21.329998, y: 2.9800007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2664,7 +2664,7 @@ Transform:
   m_GameObject: {fileID: 2087244961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19369984, y: -0.97434986, z: 0}
+  m_LocalPosition: {x: -0.17354965, y: -1.9600749, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2686,11 +2686,11 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.5686275, b: 0, a: 1}
-  m_Intensity: 0.635692
+  m_Color: {r: 0.9339623, g: 0.58446074, b: 0.101326115, a: 1}
+  m_Intensity: 0.08216533
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 0000000069d48ac0
+  m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2745,7 +2745,7 @@ Transform:
   m_GameObject: {fileID: 2108144316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.29799986, y: -1.499, z: 0}
+  m_LocalPosition: {x: -0.26699924, y: -3.0155, z: 0.06445278}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3069,7 +3069,7 @@ Transform:
   m_GameObject: {fileID: 7436564649856651228}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.96, y: -3.7, z: 0}
+  m_LocalPosition: {x: 21.33, y: 3.4, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18570,8 +18570,8 @@ GameObject:
   - component: {fileID: 7600006704200724037}
   - component: {fileID: 787137360563219980}
   - component: {fileID: 7600006704200724038}
-  - component: {fileID: 7600006704200724419}
-  - component: {fileID: 7600006704200724420}
+  - component: {fileID: 7600006704200724522}
+  - component: {fileID: 7600006704200724523}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -18635,7 +18635,7 @@ MonoBehaviour:
   ChargingText: {fileID: 1398067563}
   ConnenctionDistance: 7
   ColorIntensity: 6
---- !u!82 &7600006704200724419
+--- !u!82 &7600006704200724522
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18731,7 +18731,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &7600006704200724420
+--- !u!82 &7600006704200724523
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19561,7 +19561,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 7600006704200724420}
+    source: {fileID: 7600006704200724523}
   - name: JumpDrop
     clip: {fileID: 8300000, guid: c0588912cd1613246b62a2308df2cd50, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19571,7 +19571,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 1947129289}
+    source: {fileID: 1947129392}
   - name: Death
     clip: {fileID: 8300000, guid: 8f8a588708c1d1f4f8da47ac9065b6e4, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19581,7 +19581,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 1947129288}
+    source: {fileID: 1947129391}
   - name: Pause
     clip: {fileID: 8300000, guid: 7eeb4198f0cdad64b891df385d548162, type: 3}
     sourceObject: {fileID: 217719636}
@@ -19591,7 +19591,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 1
     loop: 1
-    source: {fileID: 217719725}
+    source: {fileID: 217719828}
   - name: ForestAmbiance
     clip: {fileID: 8300000, guid: 4ad57c8d99e0e7b49814e39320ae538d, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19601,7 +19601,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 1
     loop: 1
-    source: {fileID: 1947129287}
+    source: {fileID: 1947129390}
   - name: Credits
     clip: {fileID: 8300000, guid: a3010cc1097902245a500681a420cae0, type: 3}
     sourceObject: {fileID: 217719636}
@@ -19611,7 +19611,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 217719724}
+    source: {fileID: 217719827}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

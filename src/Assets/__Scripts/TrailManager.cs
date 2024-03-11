@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.VFX;
+using System;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -38,7 +40,7 @@ public class TrailManager : MonoBehaviour
     private Color VFXColor;
     float Distance;
     float NearestDistance = float.PositiveInfinity;
-    
+
     public static bool runned = false;
 
     private void OnEnable()
@@ -52,7 +54,7 @@ public class TrailManager : MonoBehaviour
 
     void Update()
     {
-        if (AllObjects != null)
+        try
         {
             for (int i = 0; i < AllObjects.Length; i++)
             {
@@ -65,7 +67,11 @@ public class TrailManager : MonoBehaviour
                 }
             }
         }
-        else updateAllObjects();
+        catch
+        {
+            Debug.LogError("\"AllObjects\" is null. No further action required");
+            updateAllObjects();
+        }
 
         if (NearestDistance <= ConnenctionDistance)
         {

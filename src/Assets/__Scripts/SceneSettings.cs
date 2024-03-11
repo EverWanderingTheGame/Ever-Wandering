@@ -20,7 +20,7 @@ public class SceneSettings : MonoBehaviour
     [Space, Header("Player")]
     [SerializeField] public bool disablePlayer = false;
     [SerializeField] public bool disablePlayerMovement = false;
-    [SerializeField, Range(-1, 100), Tooltip("-1 = DO NOT CHANGE")] public int StartingLightPower = 100;
+    [SerializeField, Range(-1, 100), Tooltip("-1 = Don't change value")] public int StartingLightPower = 100;
     [Space, Header("Graphics")]
     [SerializeField] public bool disableHUD = false;
     [SerializeField] public bool disablePauseMenu = false;
@@ -37,6 +37,7 @@ public class SceneSettings : MonoBehaviour
     [Header("In EditMode Only")]
     [SerializeField] public bool disableLoadingScreen = true;
     [SerializeField] public bool disableHUDInEditMode = true;
+    [SerializeField] public bool unlimitedLightPowerInEditor = false;
 
     GameHUD gameHUD;
     PlayerMovement playerMovement;
@@ -153,6 +154,16 @@ public class SceneSettings : MonoBehaviour
             c_VirtualCam.m_LookAt = GameManager.instance.player.transform;
             c_VirtualCam.m_Follow = GameManager.instance.player.transform;
         }
+    }
+
+    void Update()
+    {
+#if UNITY_EDITOR
+        if (unlimitedLightPowerInEditor)
+        {
+            TrailManager.LightPower = 100;
+        }
+#endif
     }
 }
 

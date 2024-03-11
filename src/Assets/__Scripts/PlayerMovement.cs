@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public bool disablePlayerMovement;
 
     private BoxCollider2D boxCollider2D;
-    private Rigidbody2D rb;
+    private Rigidbody2D playerRigidBody;
 
     float horizontalMove = 0f;
     bool jump = false;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        playerRigidBody = GetComponent<Rigidbody2D>();
 
         _virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         _orthoSize = _virtualCamera.m_Lens.OrthographicSize;
@@ -42,9 +42,6 @@ public class PlayerMovement : MonoBehaviour
         
         if ((GameManager.instance.gameState == GameState.Playing || GameManager.instance.gameState == GameState.Prsentation) && !disablePlayerMovement && !LevelManager.instance.isLoading)
         {
-            BodyAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-            HeadAnimator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-
             if (Input.GetButtonDown("Jump"))
             {
                 jump = true;
@@ -58,14 +55,14 @@ public class PlayerMovement : MonoBehaviour
             _virtualCamera.m_Lens.OrthographicSize = orthoSize;
         } else
         {
-            BodyAnimator.SetFloat("Speed", 0);
-            HeadAnimator.SetFloat("Speed", 0);
-
             if (Input.GetButtonDown("Jump"))
             {
                 jump = false;
             }
         }
+
+        BodyAnimator.SetFloat("Speed", Mathf.Abs(playerRigidBody.velocity.x));
+        HeadAnimator.SetFloat("Speed", Mathf.Abs(playerRigidBody.velocity.x));
     }
 
     void FixedUpdate()
