@@ -148,4 +148,9 @@ public class CharacterController2D : MonoBehaviour
 
         TrailManager.flip = true;
     }
+
+    public void addJumpForce(float jumpforce)
+    {
+        m_Rigidbody2D.AddForce(new Vector2(0f, jumpforce));
+    }
 }

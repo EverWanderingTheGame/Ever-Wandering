@@ -11,10 +11,12 @@ public class TriggerEvent : MonoBehaviour
     public bool triggered = false;
     public bool TriggerOnce = false;
     public TriggerType triggerType;
-    public TriggerObjectType triggerObjectType;
+    public TriggerObjectType triggerObjectType = TriggerObjectType.Player;
     [Header("Custom Events")]
     [Space]
     public UnityEvent OnEnterTrigger;
+    [Space]
+    public UnityEvent OnExitTrigger;
 
     [Header("Gizmo Settings")]
     [SerializeField] private bool _displayGizmo = true;
@@ -47,6 +49,7 @@ public class TriggerEvent : MonoBehaviour
     {
         if (
             (
+                (triggerObjectType == TriggerObjectType.Any) ||
                 (collider.gameObject.tag == "Player" && collider.GetType() == typeof(BoxCollider2D) && triggerObjectType == TriggerObjectType.Player) ||
                 (collider.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
             ) &&
@@ -55,7 +58,7 @@ public class TriggerEvent : MonoBehaviour
         {
             if (triggerType == TriggerType.Debug) // Debug
             {
-                Debug.Log(triggerObjectType.ToString()+" Entered Debug Trigger");
+                Debug.Log(triggerObjectType.ToString() + " Entered Debug Trigger");
             }
             else if (triggerType == TriggerType.EndLevel && triggerObjectType == TriggerObjectType.Player) // End Level 
             {
@@ -90,6 +93,7 @@ public class TriggerEvent : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider)
     {
         if (
+            (triggerObjectType == TriggerObjectType.Any) ||
             (collider.gameObject.tag == "Player" && collider.GetType() == typeof(BoxCollider2D) && triggerObjectType == TriggerObjectType.Player) ||
             (collider.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
         )
@@ -109,6 +113,7 @@ public class TriggerEvent : MonoBehaviour
                 collider.gameObject.GetComponent<Box>().DisableVFX();
             }
 
+            OnExitTrigger.Invoke();
             triggered = TriggerOnce ? true : false;
         }
     }
@@ -172,6 +177,7 @@ public enum TriggerType
 
 public enum TriggerObjectType
 {
+    Any,
     Player,
     Box
 }

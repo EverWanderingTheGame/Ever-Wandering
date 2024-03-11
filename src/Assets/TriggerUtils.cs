@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TriggerUtils : MonoBehaviour
 {
-    public void DisableObjectOnEnter(GameObject gameObject)
+    public void DisableObject(GameObject gameObject)
     {
         gameObject.SetActive(false);
     }
 
-    public void EnableObjectOnEnter(GameObject gameObject)
+    public void EnableObject(GameObject gameObject)
     {
         gameObject.SetActive(true);
     }

@@ -90,8 +90,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f49c995865a7bb4087e0a71a125fb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggered: 0
+  TriggerOnce: 0
   triggerType: 3
+  triggerObjectType: 1
   OnEnterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitTrigger:
     m_PersistentCalls:
       m_Calls: []
   _displayGizmo: 1
@@ -187,8 +193,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f49c995865a7bb4087e0a71a125fb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggered: 0
+  TriggerOnce: 0
   triggerType: 4
+  triggerObjectType: 1
   OnEnterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitTrigger:
     m_PersistentCalls:
       m_Calls: []
   _displayGizmo: 1
@@ -218,7 +230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6943880918287798857}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 75.38675, y: -8.145224, z: -0.34221762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

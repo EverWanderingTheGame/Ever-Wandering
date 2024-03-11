@@ -472,9 +472,9 @@ GameObject:
   - component: {fileID: 217719640}
   - component: {fileID: 217719639}
   - component: {fileID: 217719638}
-  - component: {fileID: 217719826}
-  - component: {fileID: 217719828}
-  - component: {fileID: 217719827}
+  - component: {fileID: 217719846}
+  - component: {fileID: 217719848}
+  - component: {fileID: 217719847}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -636,7 +636,7 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!82 &217719826
+--- !u!82 &217719846
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -732,7 +732,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &217719827
+--- !u!82 &217719847
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -828,7 +828,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &217719828
+--- !u!82 &217719848
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2138,10 +2138,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1947129203}
-  - component: {fileID: 1947129389}
-  - component: {fileID: 1947129392}
-  - component: {fileID: 1947129391}
-  - component: {fileID: 1947129390}
+  - component: {fileID: 1947129409}
+  - component: {fileID: 1947129412}
+  - component: {fileID: 1947129411}
+  - component: {fileID: 1947129410}
   m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
@@ -2164,7 +2164,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1229252627894602961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1947129389
+--- !u!82 &1947129409
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2260,7 +2260,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129390
+--- !u!82 &1947129410
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2356,7 +2356,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129391
+--- !u!82 &1947129411
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2452,7 +2452,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129392
+--- !u!82 &1947129412
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13345,8 +13345,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 854640661657174084}
-  - component: {fileID: 5088375839245897236}
   - component: {fileID: 4298021326312163307}
+  - component: {fileID: 5088375839245897236}
   - component: {fileID: 1550652329601153696}
   m_Layer: 0
   m_Name: Game Manager
@@ -18570,8 +18570,8 @@ GameObject:
   - component: {fileID: 7600006704200724037}
   - component: {fileID: 787137360563219980}
   - component: {fileID: 7600006704200724038}
-  - component: {fileID: 7600006704200724522}
-  - component: {fileID: 7600006704200724523}
+  - component: {fileID: 7600006704200724542}
+  - component: {fileID: 7600006704200724543}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -18635,7 +18635,7 @@ MonoBehaviour:
   ChargingText: {fileID: 1398067563}
   ConnenctionDistance: 7
   ColorIntensity: 6
---- !u!82 &7600006704200724522
+--- !u!82 &7600006704200724542
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18731,7 +18731,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &7600006704200724523
+--- !u!82 &7600006704200724543
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19561,7 +19561,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 7600006704200724523}
+    source: {fileID: 7600006704200724543}
   - name: JumpDrop
     clip: {fileID: 8300000, guid: c0588912cd1613246b62a2308df2cd50, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19571,7 +19571,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 1947129392}
+    source: {fileID: 1947129412}
   - name: Death
     clip: {fileID: 8300000, guid: 8f8a588708c1d1f4f8da47ac9065b6e4, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19581,7 +19581,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 1947129391}
+    source: {fileID: 1947129411}
   - name: Pause
     clip: {fileID: 8300000, guid: 7eeb4198f0cdad64b891df385d548162, type: 3}
     sourceObject: {fileID: 217719636}
@@ -19591,7 +19591,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 1
     loop: 1
-    source: {fileID: 217719828}
+    source: {fileID: 217719848}
   - name: ForestAmbiance
     clip: {fileID: 8300000, guid: 4ad57c8d99e0e7b49814e39320ae538d, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19601,7 +19601,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 1
     loop: 1
-    source: {fileID: 1947129390}
+    source: {fileID: 1947129410}
   - name: Credits
     clip: {fileID: 8300000, guid: a3010cc1097902245a500681a420cae0, type: 3}
     sourceObject: {fileID: 217719636}
@@ -19611,7 +19611,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 217719827}
+    source: {fileID: 217719847}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

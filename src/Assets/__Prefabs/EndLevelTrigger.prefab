@@ -90,8 +90,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f49c995865a7bb4087e0a71a125fb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggered: 0
+  TriggerOnce: 0
   triggerType: 2
+  triggerObjectType: 1
   OnEnterTrigger:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExitTrigger:
     m_PersistentCalls:
       m_Calls: []
   _displayGizmo: 1
