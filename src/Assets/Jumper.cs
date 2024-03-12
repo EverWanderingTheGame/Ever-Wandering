@@ -6,7 +6,7 @@ public class Jumper : MonoBehaviour
 {
     public TriggerEvent trigger;
     public Animator animator;
-    [Range(1000, 2000)]public float jumpForce = 1100f;
+    [Range(1f, 100)]public float jumpForce = 10f;
 
     private CharacterController2D characterController;
 
@@ -19,8 +19,8 @@ public class Jumper : MonoBehaviour
     {
         trigger.triggered = true;
         animator.SetTrigger("Jump");
-        characterController.Move(0, false, true);
-        characterController.addJumpForce(jumpForce);
+        characterController.Move(0, false, false);
+        characterController.addForce(new Vector2(0, jumpForce));
     }
 
     public void triggerExited()

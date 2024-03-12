@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: {fileID: 5987555042549214372}
   animator: {fileID: 541397595743798567}
-  jumpForce: 1550
+  jumpForce: 16
 --- !u!1 &8137169218607299054
 GameObject:
   m_ObjectHideFlags: 0
