@@ -11,7 +11,7 @@ public class TriggerEvent : MonoBehaviour
     public bool triggered = false;
     public bool TriggerOnce = false;
     public TriggerType triggerType;
-    public TriggerObjectType triggerObjectType = TriggerObjectType.Player;
+    public TriggerObjectType triggerObjectType = TriggerObjectType.Player;  
     [Header("Custom Events")]
     [Space]
     public UnityEvent OnEnterTrigger;
@@ -23,10 +23,13 @@ public class TriggerEvent : MonoBehaviour
     [SerializeField] private bool _showOnlyWhenSelected = true;
     [SerializeField] private Color _gizmoColor = Color.green;
 
+    [HideInInspector] public Collider2D TriggeredBy = null;
+
     private bool movePlayerToTheEnd;
     private Collider2D _collider;
     private SceneSettings sceneSettings;
     private CinemachineVirtualCamera _virtualCamera;
+    
 
     void Awake()
     {
@@ -50,7 +53,7 @@ public class TriggerEvent : MonoBehaviour
         if (
             (
                 (triggerObjectType == TriggerObjectType.Any) ||
-                (collider.gameObject.tag == "Player" && collider.GetType() == typeof(BoxCollider2D) && triggerObjectType == TriggerObjectType.Player) ||
+                ((collider.gameObject.tag == "Player" && triggerObjectType == TriggerObjectType.Player) && (collider is BoxCollider2D || collider is CircleCollider2D)) ||
                 (collider.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
             ) &&
             triggered == false
@@ -84,10 +87,10 @@ public class TriggerEvent : MonoBehaviour
                 collider.gameObject.GetComponent<Box>().EnableVFX();
             }
 
+            TriggeredBy = collider;
             OnEnterTrigger.Invoke();
             triggered = true;
         }
-
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -130,7 +133,6 @@ public class TriggerEvent : MonoBehaviour
                 _virtualCamera.LookAt = null;
                 _virtualCamera.Follow = null;
             }
-
         }
     }
 

@@ -149,8 +149,9 @@ public class CharacterController2D : MonoBehaviour
         TrailManager.flip = true;
     }
 
-    public void addForce(Vector2 jumpforce)
+    public void addForce(Vector2 jumpforce = default)
     {
+        if (jumpforce == default) return;
         m_Rigidbody2D.velocity = jumpforce;
     }
 }

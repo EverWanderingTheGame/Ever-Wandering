@@ -52,7 +52,10 @@ public class GameManager : MonoBehaviour
 
     public void playerDead()
     {
-        LevelManager.instance.LoadScene(Utils.getSceneNameFromSceneReference(FindObjectOfType<SceneSettings>().curScene));
+        if (Application.isPlaying)
+        {
+            LevelManager.instance.LoadScene(Utils.getSceneNameFromSceneReference(FindObjectOfType<SceneSettings>().curScene));
+        }
     }
 }
 

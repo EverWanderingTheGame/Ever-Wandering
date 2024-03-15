@@ -100,7 +100,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoxVFX: {fileID: 5203820596428208056}
+  ExitPortal: {fileID: 0}
 --- !u!1001 &7957084608785071257
 PrefabInstance:
   m_ObjectHideFlags: 0
