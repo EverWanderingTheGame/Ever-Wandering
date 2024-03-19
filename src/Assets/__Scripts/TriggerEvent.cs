@@ -18,10 +18,7 @@ public class TriggerEvent : MonoBehaviour
     [Space]
     public UnityEvent OnExitTrigger;
 
-    [Header("Gizmo Settings")]
-    [SerializeField] private bool _displayGizmo = true;
-    [SerializeField] private bool _showOnlyWhenSelected = true;
-    [SerializeField] private Color _gizmoColor = Color.green;
+    public Gizmo gizmo;
 
     [HideInInspector] public Collider2D TriggeredBy = null;
 
@@ -53,7 +50,7 @@ public class TriggerEvent : MonoBehaviour
         if (
             (
                 (triggerObjectType == TriggerObjectType.Any) ||
-                ((collider.gameObject.tag == "Player" && triggerObjectType == TriggerObjectType.Player) && (collider is BoxCollider2D || collider is CircleCollider2D)) ||
+                (collider.gameObject.tag == "Player" && triggerObjectType == TriggerObjectType.Player && (collider is BoxCollider2D || collider is CircleCollider2D)) ||
                 (collider.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
             ) &&
             triggered == false
@@ -97,7 +94,7 @@ public class TriggerEvent : MonoBehaviour
     {
         if (
             (triggerObjectType == TriggerObjectType.Any) ||
-            (collider.gameObject.tag == "Player" && collider.GetType() == typeof(BoxCollider2D) && triggerObjectType == TriggerObjectType.Player) ||
+                (collider.gameObject.tag == "Player" && triggerObjectType == TriggerObjectType.Player && (collider is BoxCollider2D || collider is CircleCollider2D)) ||
             (collider.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
         )
         {
@@ -121,11 +118,12 @@ public class TriggerEvent : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collider)
     {
         if (
-            (collision.gameObject.tag == "Player" && collision.GetType() == typeof(BoxCollider2D) && triggerObjectType == TriggerObjectType.Player) ||
-            (collision.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
+            (triggerObjectType == TriggerObjectType.Any) ||
+            (collider.gameObject.tag == "Player" && triggerObjectType == TriggerObjectType.Player && (collider is BoxCollider2D || collider is CircleCollider2D)) ||
+            (collider.gameObject.tag == "Box" && triggerObjectType == TriggerObjectType.Box)
         )
         {
             if (triggerType == TriggerType.EndLevel)
@@ -133,36 +131,40 @@ public class TriggerEvent : MonoBehaviour
                 _virtualCamera.LookAt = null;
                 _virtualCamera.Follow = null;
             }
+            else if (triggerType == TriggerType.ItemKillZone && collider.gameObject.tag != "Player")
+            {
+                Destroy(collider.gameObject);
+            }
         }
     }
 
     void OnDrawGizmos()
     {
-        if (!_displayGizmo) return;
-        if (_showOnlyWhenSelected) return;
+        if (!gizmo.displayGizmo) return;
+        if (gizmo.showOnlyWhenSelected) return;
 
         if (_collider == null) _collider = GetComponent<Collider2D>();
-        _gizmoColor.a = 0.05f;
-        Gizmos.color = _gizmoColor;
+        gizmo.gizmoColor.a = 0.05f;
+        Gizmos.color = gizmo.gizmoColor;
         Gizmos.DrawCube(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
 
-        _gizmoColor.a = 1f;
-        Gizmos.color = _gizmoColor;
+        gizmo.gizmoColor.a = 1f;
+        Gizmos.color = gizmo.gizmoColor;
         Gizmos.DrawWireCube(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
     }
 
     void OnDrawGizmosSelected()
     {
-        if (!_displayGizmo) return;
-        if (!_showOnlyWhenSelected) return;
+        if (!gizmo.displayGizmo) return;
+        if (!gizmo.showOnlyWhenSelected) return;
 
         if (_collider == null) _collider = GetComponent<Collider2D>();
-        _gizmoColor.a = 0.1f;
-        Gizmos.color = _gizmoColor;
+        gizmo.gizmoColor.a = 0.1f;
+        Gizmos.color = gizmo.gizmoColor;
         Gizmos.DrawCube(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
 
-        _gizmoColor.a = 1f;
-        Gizmos.color = _gizmoColor;
+        gizmo.gizmoColor.a = 1f;
+        Gizmos.color = gizmo.gizmoColor;
         Gizmos.DrawWireCube(_collider.transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.bounds.size);
     }
 }
@@ -174,7 +176,8 @@ public enum TriggerType
     EndLevel,
     Death,
     DetachCamera,
-    BoxVFX
+    BoxVFX,
+    ItemKillZone
 }
 
 public enum TriggerObjectType

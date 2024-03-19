@@ -85,4 +85,11 @@ public static class Utils
     {
         return FixSceneName(sceneReference.ScenePath);
     }
+
+    public static void TeleportPlayerToAGameObject(GameObject target)
+    {
+        GameObject Player = GameManager.instance.player;
+        if (target == null) return;
+        Player.transform.position = target.transform.position;
+    }
 }

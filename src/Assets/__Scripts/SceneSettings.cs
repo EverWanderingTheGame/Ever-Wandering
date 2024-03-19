@@ -17,6 +17,7 @@ public class SceneSettings : MonoBehaviour
     [Header("OnStart Scene Settings")]
     [SerializeField] public SceneReference curScene;
     [SerializeField] public SceneReference nextScene;
+    [SerializeField] public Checkpoints checkpoints;
     [Space, Header("Player")]
     [SerializeField] public bool disablePlayer = false;
     [SerializeField] public bool disablePlayerMovement = false;
@@ -131,15 +132,22 @@ public class SceneSettings : MonoBehaviour
         }
     }
 
-    private void Start()
+    void Start()
     {
         if (Application.isPlaying)
         {
             if (StartingLightPower != -1) TrailManager.LightPower = StartingLightPower;
             GameManager.instance.player.SetActive(!disablePlayer);
             TrailManager.updateAllObjects();
-            Utils.TeleportPlayerToSceneSettings();
+            Utils.TeleportPlayerToAGameObject(GetCheckpointObject());
         }
+    }
+
+    private GameObject GetCheckpointObject()
+    {
+        if (GameManager.instance.checkpoint == CheckpointType.Start) return checkpoints.Start;
+        else if (GameManager.instance.checkpoint == CheckpointType.Mid) return checkpoints.Mid;
+        else return checkpoints.End;
     }
 
     public void reattachCamera()

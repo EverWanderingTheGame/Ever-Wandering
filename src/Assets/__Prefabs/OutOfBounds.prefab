@@ -100,9 +100,11 @@ MonoBehaviour:
   OnExitTrigger:
     m_PersistentCalls:
       m_Calls: []
-  _displayGizmo: 1
-  _showOnlyWhenSelected: 0
-  _gizmoColor: {r: 0.5176471, g: 0, b: 0, a: 1}
+  gizmo:
+    displayGizmo: 1
+    showOnlyWhenSelected: 0
+    gizmoColor: {r: 0.19607843, g: 0, b: 0, a: 1}
+  TriggeredBy: {fileID: 0}
 --- !u!1 &4354159673506995917
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,9 +205,11 @@ MonoBehaviour:
   OnExitTrigger:
     m_PersistentCalls:
       m_Calls: []
-  _displayGizmo: 1
-  _showOnlyWhenSelected: 0
-  _gizmoColor: {r: 0, g: 0.5943396, b: 0.58035505, a: 1}
+  gizmo:
+    displayGizmo: 1
+    showOnlyWhenSelected: 0
+    gizmoColor: {r: 0, g: 0.49019608, b: 0.78431374, a: 1}
+  TriggeredBy: {fileID: 0}
 --- !u!1 &6943880918287798857
 GameObject:
   m_ObjectHideFlags: 0

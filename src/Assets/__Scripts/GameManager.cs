@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState gameState = GameState.Playing;
+    public CheckpointType checkpoint = CheckpointType.Start;
 
     public GameObject player;
     public GameObject _loading;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         }
 
         _loadingAnimator = _loading.GetComponent<Animator>();
+        checkpoint = CheckpointType.Start;
     }
 
     private void Update()
@@ -65,4 +67,11 @@ public enum GameState
     Paused,
     Dialogue,
     Prsentation
+}
+
+public enum CheckpointType
+{
+    Start,
+    Mid,
+    End
 }
