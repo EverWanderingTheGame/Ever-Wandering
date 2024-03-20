@@ -4083,7 +4083,7 @@ MonoBehaviour:
     \u043E\u0441\u043D\u043E\u0432\u043D\u0438\u0442\u0435 \u043C\u0435\u0445\u0430\u043D\u0438\u043A\u0438\u0430,
     \u043A\u043E\u0438\u0442\u043E \u0441\u0430 \u043D\u0438 \u043D\u0443\u0436\u043D\u0438
     \u0437\u0430 \u0431\u044A\u0434\u0435\u0449\u043E\u0442\u043E \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u0435
-    \u043D\u0430 \u0438\u0433\u0440\u0430\u0442\u0430"
+    \u043D\u0430 \u0438\u0433\u0440\u0430\u0442\u0430."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2bcc574415d79ae4f8f6382d88bbb1cf, type: 2}
   m_sharedMaterial: {fileID: -1719505804600863131, guid: 2bcc574415d79ae4f8f6382d88bbb1cf, type: 2}
@@ -4567,9 +4567,10 @@ MonoBehaviour:
   OnExitTrigger:
     m_PersistentCalls:
       m_Calls: []
-  _displayGizmo: 1
-  _showOnlyWhenSelected: 0
-  _gizmoColor: {r: 0.71025753, g: 0, b: 1, a: 1}
+  gizmo:
+    displayGizmo: 1
+    showOnlyWhenSelected: 1
+    gizmoColor: {r: 0, g: 1, b: 0, a: 1}
   TriggeredBy: {fileID: 0}
 --- !u!61 &787426609
 BoxCollider2D:
@@ -130493,9 +130494,10 @@ MonoBehaviour:
   OnExitTrigger:
     m_PersistentCalls:
       m_Calls: []
-  _displayGizmo: 1
-  _showOnlyWhenSelected: 0
-  _gizmoColor: {r: 0.18432426, g: 0, b: 1, a: 1}
+  gizmo:
+    displayGizmo: 1
+    showOnlyWhenSelected: 1
+    gizmoColor: {r: 0, g: 1, b: 0, a: 1}
   TriggeredBy: {fileID: 0}
 --- !u!114 &7699327188007680114
 MonoBehaviour:
