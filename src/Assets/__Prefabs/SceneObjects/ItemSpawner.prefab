@@ -100,9 +100,10 @@ MonoBehaviour:
   OnExitTrigger:
     m_PersistentCalls:
       m_Calls: []
-  _displayGizmo: 1
-  _showOnlyWhenSelected: 0
-  _gizmoColor: {r: 0, g: 1, b: 0, a: 1}
+  gizmo:
+    displayGizmo: 1
+    showOnlyWhenSelected: 0
+    gizmoColor: {r: 0, g: 1, b: 0, a: 1}
   TriggeredBy: {fileID: 0}
 --- !u!1 &963907920719855781
 GameObject:

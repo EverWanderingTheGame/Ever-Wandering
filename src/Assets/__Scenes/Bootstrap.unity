@@ -345,7 +345,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings: []
+  m_Bindings:
+  - {fileID: 155358064}
+  - {fileID: 155358063}
+  - {fileID: 155358062}
+  - {fileID: 155358061}
   m_VisualEffect: {fileID: 155358067}
 --- !u!73398921 &155358066
 VFXRenderer:
@@ -468,9 +472,9 @@ GameObject:
   - component: {fileID: 217719640}
   - component: {fileID: 217719639}
   - component: {fileID: 217719638}
-  - component: {fileID: 217720005}
-  - component: {fileID: 217720007}
-  - component: {fileID: 217720006}
+  - component: {fileID: 217720049}
+  - component: {fileID: 217720051}
+  - component: {fileID: 217720050}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -632,7 +636,7 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!82 &217720005
+--- !u!82 &217720049
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -728,7 +732,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &217720006
+--- !u!82 &217720050
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -824,7 +828,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &217720007
+--- !u!82 &217720051
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2099,10 +2103,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1947129203}
-  - component: {fileID: 1947129568}
-  - component: {fileID: 1947129571}
-  - component: {fileID: 1947129570}
-  - component: {fileID: 1947129569}
+  - component: {fileID: 1947129612}
+  - component: {fileID: 1947129615}
+  - component: {fileID: 1947129614}
+  - component: {fileID: 1947129613}
   m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
@@ -2125,7 +2129,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1229252627894602961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1947129568
+--- !u!82 &1947129612
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2221,7 +2225,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129569
+--- !u!82 &1947129613
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2317,7 +2321,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129570
+--- !u!82 &1947129614
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2413,7 +2417,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1947129571
+--- !u!82 &1947129615
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17972,7 +17976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6814286409038205588
 GameObject:
   m_ObjectHideFlags: 0
@@ -18154,8 +18158,8 @@ GameObject:
   - component: {fileID: 7600006704200724037}
   - component: {fileID: 787137360563219980}
   - component: {fileID: 7600006704200724038}
-  - component: {fileID: 7600006704200724701}
-  - component: {fileID: 7600006704200724702}
+  - component: {fileID: 7600006704200724745}
+  - component: {fileID: 7600006704200724746}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -18219,7 +18223,7 @@ MonoBehaviour:
   ChargingText: {fileID: 1398067563}
   ConnenctionDistance: 7
   ColorIntensity: 6
---- !u!82 &7600006704200724701
+--- !u!82 &7600006704200724745
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18315,7 +18319,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &7600006704200724702
+--- !u!82 &7600006704200724746
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18941,7 +18945,7 @@ MonoBehaviour:
   pauseMenuFX: {fileID: 2519559970641529265}
   PlayerHUD: {fileID: 3362040977105806051}
   CameraFX: {fileID: 6635482055919885094}
-  unpauseable: 0
+  unpauseable: 1
 --- !u!1 &8870971830073451856
 GameObject:
   m_ObjectHideFlags: 0
@@ -19062,7 +19066,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 7600006704200724702}
+    source: {fileID: 7600006704200724746}
   - name: JumpDrop
     clip: {fileID: 8300000, guid: c0588912cd1613246b62a2308df2cd50, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19072,7 +19076,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 1947129571}
+    source: {fileID: 1947129615}
   - name: Death
     clip: {fileID: 8300000, guid: 8f8a588708c1d1f4f8da47ac9065b6e4, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19082,7 +19086,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 1947129570}
+    source: {fileID: 1947129614}
   - name: Pause
     clip: {fileID: 8300000, guid: 7eeb4198f0cdad64b891df385d548162, type: 3}
     sourceObject: {fileID: 217719636}
@@ -19092,7 +19096,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 1
     loop: 1
-    source: {fileID: 217720007}
+    source: {fileID: 217720051}
   - name: ForestAmbiance
     clip: {fileID: 8300000, guid: 4ad57c8d99e0e7b49814e39320ae538d, type: 3}
     sourceObject: {fileID: 1947129202}
@@ -19102,7 +19106,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 1
     loop: 1
-    source: {fileID: 1947129569}
+    source: {fileID: 1947129613}
   - name: Credits
     clip: {fileID: 8300000, guid: a3010cc1097902245a500681a420cae0, type: 3}
     sourceObject: {fileID: 217719636}
@@ -19112,7 +19116,7 @@ MonoBehaviour:
     playOnAwake: 0
     RandomizeTime: 0
     loop: 0
-    source: {fileID: 217720006}
+    source: {fileID: 217720050}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
