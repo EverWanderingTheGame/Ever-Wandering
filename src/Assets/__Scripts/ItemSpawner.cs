@@ -23,6 +23,7 @@ public class ItemSpawner : MonoBehaviour
         }
 
         if (Random.value < spawnRate * Time.deltaTime && Application.isPlaying)
+
         {
             SpawnItem();
         }
